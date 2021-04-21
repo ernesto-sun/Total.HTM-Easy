@@ -320,7 +320,7 @@ Note: The auto-generated No-JavaScript-website 's.htm' works on anything that ca
 
 Please always keep in mind if you are testing the file 'Total.HTM' or the 'Release'. These are two different websites in fact. Both need to look the same in the browser, but only the 'Release' runs optimized and error-free. Some warnings running 'Total.HTM' itself are even wanted.
 
-When you report a bug, please include as much relevant information as possible. Such as your browser, your operating system and such. But don't worry if this is too much for youk. Just contact us. We are happy for any kind of bug-reports. 
+When you report a bug, please include as much relevant information as possible. Such as your browser, your operating system etc. But don't worry if this is too much for you. Just contact us. We are happy for any kind of bug-reports. 
 
 Yes, we want you happy! Why? Because we do not only share an Internet together, but a whole planet! 
 
