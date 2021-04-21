@@ -1,0 +1,7 @@
+# This makes Apache prefer php over htm, 
+# the latter one is there as fallback in case PHP is not supported
+# that works well, because, when PHP is not supported, htaccess neighter is 
+# with html fallback
+
+DirectoryIndex index.php index.htm index.html
+

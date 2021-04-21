@@ -1,0 +1,61 @@
+
+
+/* --------------------- CSS File for Theme 'dark' ------------------- */
+
+
+:root 
+{
+--col-bg:               #090909;         /* Background */
+--col-fg:               #dcf8ff;         /* Foreground */
+
+--col-bg-main:         rgba(9,9,9,0.8);         /* Background  of Content-Area */
+
+--topline-bg:             linear-gradient(to bottom, #090909 0%,#090909 80%, rgba(9,9,9,0) 100%);
+
+--menu-bg:                linear-gradient(to bottom, rgba(43,43,55,0.8) 0%, rgba(43,43,55,0.95) 50%, rgba(43,43,55,0.8) 51%, rgba(43,43,55,0.7) 100%);
+--menu-border:            0.02em solid #090909;
+--menu-border-radius:     0.4em;
+
+--bg-free:              rgba(40,40,40,0.13);     /* near-transparent background-color of dialogs, popups, etc. */
+
+--col-green:            #32af32;          /* used for OK things, nice messages, ... */            
+--col-orange:           #fcd145;          /* used for something important, warnings, ... */
+--col-red:              #df1111;          /* used for errors, critical buttons, ... */
+
+--col-active:           #ee6462;          /* active tabs */
+
+--inp-col-fg:           var(--col-bg); 
+--but-col-fg:           var(--col-fg);
+--but-shadow:           0.05em 0.05em 0.12em var(--col-fg);
+}
+
+
+*:not(section).toggle > *:nth-child(1)::before,
+section.toggle > header > *:nth-child(1)::before,
+main .readmore:before,
+.ul-custom > li:before,
+img.sym,
+a:before
+{
+filter: invert(0.95) hue-rotate(190deg) brightness(1.3);   /* Yeahh, I found a way to get near #dcf8ff. Is that ok?! */
+}
+
+#msg-outer span
+{
+color: var(--col-bg);
+}
+
+#slider-main .box > p
+{
+color: var(--col-bg);
+}
+
+svg.sym *
+{
+fill: var(--col-fg);
+}
+
+#footer-logo-grid .box:nth-child(3)
+{
+background: #ffffff;
+}

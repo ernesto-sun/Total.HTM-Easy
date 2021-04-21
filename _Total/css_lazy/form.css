@@ -1,0 +1,209 @@
+    
+select, 
+textarea,
+.txt > input, 
+.chk > input,
+.col > input,
+.com > input,
+.time > input,
+.date > input,
+.datetime input,
+.num-regular > input, 
+.com-radio > fieldset
+{
+border: var(--inp-border);
+border-radius: var(--inp-border-radius);
+box-shadow: var(--inp-shadow);     
+}
+
+select,
+textarea,
+.col > input,
+.txt > input,
+.com > input,
+.time > input,
+.date > input,
+.datetime input,
+.num-regular > input
+{
+color: var(--inp-col-fg);
+padding: var(--inp-padding);     
+background-color: var(--inp-col-bg);
+}
+
+.num-regular > input::-webkit-outer-spin-button,
+.num-regular > input::-webkit-inner-spin-button 
+{
+-webkit-appearance: none;
+margin: 0;
+}
+
+.num-regular > input 
+{
+-moz-appearance: textfield;
+}
+
+
+fieldset
+{
+margin-bottom: 0.4em;    
+}
+
+fieldset > .div-option > label
+{
+font-weight: normal;
+}
+
+.com-radio > fieldset > legend:nth-child(1)
+{
+font-size: 0.75em;    
+}
+
+.datetime > fieldset
+{
+margin: 0;
+padding: 0;
+border: none;
+display: flex;
+flex-direction: row;
+flex-wrap: nowrap;    
+}
+
+.datetime > fieldset > .inp-time
+{
+border-left: none;
+border-top-left-radius: 0;
+border-bottom-left-radius: 0;
+position: relative;
+left: -0.1em; /* to help make the optical overlap */
+z-index: 2;    
+outline:none; 
+}
+
+.datetime > fieldset > .inp-date
+{
+border-right:none;
+border-top-right-radius: 0;
+border-bottom-right-radius: 0;
+outline:none;
+}
+
+.datetime > fieldset > .inp-date:focus
+{
+z-index:3;
+}
+
+.txt-area
+{
+flex-direction:column;    
+}
+
+.txt-area > label
+{
+display:block;
+min-width: auto;
+}
+
+.txt-area > textarea
+{
+display:block;
+width: 100%;
+height:4em;
+}
+
+main form select
+{
+min-width:8em;    
+}
+
+.num-regular > input
+{
+max-width:6em; 
+}
+
+.txt > input,
+.num-range > input
+{
+width:100%; 
+}
+
+.chapter
+{
+margin:1.5em 0 0.5em 0;    
+}
+
+.chapter:nth-child(1)
+{
+margin-top:0em;    
+}
+
+.com-radio.readonly > fieldset > legend:nth-child(1)
+{
+display:none;
+}
+
+.com-radio.readonly > fieldset,
+.readonly > input,
+.readonly > textarea
+{
+box-shadow: none;
+color:  var(--inp-col-readonly);
+border-color:  var(--inp-col-readonly) !important;
+border-style:  solid  !important;
+outline: none !important;
+}
+
+.uxc .inp
+{
+background-color:var(--inp-col-bg-dirty);    
+}
+
+.num-range.uxc > .inp,
+.chk.uxc > .inp
+{
+outline: 0.2em solid var(--inp-col-bg-dirty);
+}
+
+/*  .inp:invalid  */
+.invalid .inp
+{
+background-color: var(--inp-col-bg-invalid);    
+border-color: var(--col-red);
+}
+
+.num-range.invalid > .inp,
+.chk.invalid > .inp
+{
+outline: 0.2em solid var(--col-red);
+}
+
+form .div-captcha
+{
+display: flex;
+flex-direction: column;    
+justify-content: center;
+width: -moz-fit-content;
+width: fit-content;
+margin: auto;
+}
+
+form .div-captcha img.captcha-image,
+form .div-captcha > input
+{
+width: 8em;
+font-size: 1.4em;
+}
+
+form .div-captcha > input
+{
+margin-top: 0.25em;
+}
+
+
+form .div-captcha img.captcha-reload
+{
+position: absolute;
+right: 0;
+bottom: 0;
+}
+

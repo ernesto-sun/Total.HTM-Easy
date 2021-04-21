@@ -1,0 +1,87 @@
+
+
+/* ------------------------------------- Chapter popup ------------------- */
+
+#popup
+{
+z-index:100000;
+position:absolute;
+min-width:50%;
+left:25%;
+}
+
+
+#popup.slim
+{
+left:35%;
+min-width:30%;
+margin:auto;
+}
+
+body.screen-small #popup
+{
+min-width:80%;
+left:10%;
+}
+
+body.screen-small #popup.slim
+{
+min-width:60%;
+left:20%;
+}
+
+body.screen-small.portrait #popup.slim
+{
+min-width:96%;
+left:2%;
+}
+
+body.screen-small.portrait #popup
+{
+min-width:96%;
+left:2%;
+}
+
+#popup-content
+{
+padding:0.5em 1em;
+min-height:5em;
+}
+
+#popup-content img.img-popup-fullsize
+{
+width:100%;
+}
+
+#popup-sym-close
+{
+position:absolute;
+cursor:pointer;
+top:-0.5em;
+right:-0.5em;
+
+}
+
+#popup.popup-noclose #popup-sym-close
+{
+display:none;
+}
+
+
+/* ----------------------------------------------- popup DESIGN ------------------------- */
+
+
+#popup-content
+{
+background: rgba(255,255,255,0.95);
+border-radius:0.66em;
+box-shadow:0.2em 0.2em 1em #666;
+}
+
+#popup-sym-close img
+{
+z-index:9999;
+width:2em;
+background:rgba(255,255,255,1);
+border-radius:1em;
+}

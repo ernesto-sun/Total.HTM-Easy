@@ -1,0 +1,142 @@
+
+#topline
+{
+position:fixed;
+top:0;
+left:0;
+height:var(--topline-height);
+width:100vw;
+z-index:1001;
+margin:0 auto;
+transition:height 0.5s ease;
+padding-bottom:0.2em;
+pointer-events: none;  
+}
+
+#header.ratio > #topline
+{
+max-width:calc(100vh / var(--ratio));  /* TODO: I think this formula needs to integrate the screen-ratio... */
+left:max(calc((100vw - (100vh / var(--ratio))) / 2), 0px);
+}
+
+#header.out > #topline
+{
+height:var(--topline-height-shrunk);
+}
+
+#header.in > #topline
+{
+height:var(--topline-height);
+}
+
+#topline > .bg-free
+{
+pointer-events: auto;      
+}
+
+#topline-left
+{
+height:100%;
+display:inline-block;
+pointer-events: auto;  
+}
+
+#topline-right
+{
+display:flex;
+height:var(--topline-height);
+position:absolute;
+top:0em;
+right:0em;
+pointer-events: auto;  
+transition:transform 0.5s ease;
+}
+
+body > header.out > #topline > #topline-right
+{
+transform:translate(0,-0.4em);    
+}
+
+
+#topline-bg
+{
+width:100%;
+height:100%;  
+position:absolute;
+left:0px;
+right:0px;
+pointer-events: none;
+}
+
+
+#header-logo-title
+{
+display:flex;
+flex-direction:row;
+justify-content: flex-start;
+align-items:center;
+height:100%;
+flex-wrap:nowrap;
+max-width:calc(100vw - 4em);  /* so that title would never cross the hamburger, further JS-adjustments... */
+overflow:hidden;
+}
+
+#header-logo
+{
+height:100%;
+}
+
+#header-logo img
+{
+height:100%;
+width:auto;
+}
+
+#header-title
+{
+position:relative;
+top:-0.15em;
+margin:0 0 0 0.3em;
+transform-origin: left center;
+display:none;
+}
+
+body.landscape #header-title
+{
+display:block;
+}
+
+#header-title h1
+{
+display:inline-block;
+font-weight:bold;
+transition:font-size 0.5s ease;
+white-space:nowrap;
+}
+
+
+body > header.out #header-title h1
+{
+font-size:var(--tit-font-size-shrunk);    
+}
+
+#topline-search,
+#topline-lang,
+#topline-hamburger
+{
+height:100%;
+cursor:pointer;
+}
+
+#topline-search
+{
+margin-right:0.5em;    
+}
+
+
+.svg-hamburger,
+.svg-search
+{
+height:4.2em;
+width:auto;
+}

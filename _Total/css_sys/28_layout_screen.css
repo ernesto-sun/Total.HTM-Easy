@@ -1,0 +1,57 @@
+
+
+/* 
+Here you can set special CSS some screen-sizes:
+
+* MEDIUM SCREEN 
+* VERY SMALL SCREEN
+* SMALL SCREEN (includes VERY SMALL) 
+* BIG SCREEN (includes MEDIUM)
+* VERY BIG SCREEN (includes MEDIUM, BIG)
+
+*/
+
+/* ---------- MEDIUM SCREEN (default to all) -------------- */
+
+
+
+
+
+/* ------------------------ VERY SMALL SCREEN -------------------------- */
+@media only screen and (max-width:490px)
+{
+
+  .box-grid-quarter > .box-grid-body > .box
+  {
+  width:49%;
+  margin:0 0 1em 1% !important;
+  }
+
+  #lightbox.show
+  {
+    left:-5%;
+    width:140%;
+  }
+}
+
+
+/* ---------------------------- SMALL SCREEN --------------------------- */
+@media only screen and (max-width:690px)
+{
+
+
+}
+
+
+/* ---------------------------- BIG SCREEN ------------------------------ */
+@media only screen and (min-width: 1200px)
+{
+
+}
+
+/* --------------------------- VERY BIG SCREEN --------------------------- */
+@media only screen and (min-width: 1600px)
+{
+
+}
+

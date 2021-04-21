@@ -1,0 +1,379 @@
+
+/*
+ *  Some words about the z-index...  (Can be positive and negative 32 bit, lets use max. +-million )
+ *
+ *
+ *  top-line 100
+ *  menu-main 300000 (if in hamburger, otherwise 7900)
+ *  menu-sys 300000
+ *  menu-dyn 300000
+ *  lightbox  10000
+ *  popup  100000
+ *
+ *  div-loading  99
+ *  msg-outer 200000
+ *  iframe-login  99999   right below popup
+ *  bubble from jquery-nodepad 9999     right below lightbox
+ *  .jstree-contextmenu 10001  right above lightbox
+ *  .div-loading 99999 only
+  topped by popup
+
+ *
+ * .bg-free is used below dialogs, lightbox and menus: 8900
+ */
+
+html
+{
+background:transparent;
+-webkit-text-size-adjust: none;  /* otherwise strange resizing of some fonts at chrome mobile */
+scroll-behavior: smooth;
+}
+
+html.invert
+{
+filter: invert(1);
+}
+
+html.invert img:not(.sym),
+html.invert #msg-outer
+{
+filter: invert(1);  /* re-invert certain elements */ 
+}
+ 
+html.sepia
+{
+filter: sepia(1);
+}
+
+body
+{
+background:transparent;
+font:sans-serif;
+font-weight:normal;
+font-variant:normal;
+font-stretch:normal;
+text-decoration:none;
+text-transform:none;
+text-shadow:0;
+min-height:100vh;
+display: flex;
+flex-direction:column;
+margin:0;
+padding:0;
+top:0;
+left:0;
+}
+
+
+
+body,header,nav,main,section,footer,div,p,picture,img,ul,li,q,h1,h2,h3,h4,h5,h6
+{
+position: relative;
+margin: 0;
+padding: 0;
+border: 0;
+outline: 0;
+box-sizing: border-box;
+overflow: visible;
+vertical-align: top;
+}
+
+
+/*
+font-size: inherit;
+ word-spacing:0em;
+letter-spacing:0em; */
+
+
+html, body
+{
+overscroll-behavior-x: none; 
+-ms-overflow-style: none;
+scrollbar-width: none;
+overflow: -moz-scrollbars-none;
+width:100%;
+height:100%;
+}
+
+
+h1, h2, h3, h4, h5, h6
+{
+display: block;
+}
+
+
+input,
+select,
+textarea
+{
+box-sizing:border-box;
+}
+
+
+main
+{
+width:100%;
+}
+
+#main-outer
+{
+flex: 1 0 auto;
+}
+
+footer
+{
+flex-shrink: 0;  
+max-width: 100vw;
+overflow:hidden;
+}
+
+body.ratio > #main-outer,
+footer.ratio,
+#intro.ratio
+{
+margin-left:auto;
+margin-right:auto;
+max-width:calc(100vh / var(--ratio));  /* TODO: I think this formular needs to integrate the screen-ratio... */
+min-width: 62vw;
+}
+
+body.portrait.ratio > #main-outer,
+body.portrait footer.ratio,
+body.portrait #intro.ratio,
+body.screen-small.ratio > #main-outer,
+body.screen-small footer.ratio,
+body.screen-small #intro.ratio
+{
+min-width: auto !important;   /* no min-width at mobiles and funny portrait screens. */
+}
+
+
+
+input, textarea, select, button
+{
+font-size:1em;   /* otherwise browsers display it pixel-based in some cases */
+}
+
+button
+{
+cursor:pointer;
+}
+
+
+li  /* this makes li more neutral to be designed explicitly as list-item */
+{
+background-image: none;
+padding: 0 0 0 0;
+}
+
+body.portrait a, 
+body.portrait *[onclick]
+{
+user-select: none;  /* TODO: Find a more ideal solution to avoid text-selection on mobile phones at longer clicks */
+}
+
+
+/* ------------------------------------- Chapter FIXED Things ------------------- */
+
+#div-1em
+{
+display:block;
+height:1em;
+width:1em;
+}
+
+#div-100v
+{
+display:block;
+width:100vw;
+height:100vh;
+}
+
+
+.bg-free
+{
+position:fixed;
+top:0;
+left:-120vw; /* a bugfix of not spanning the whole screen with e.g. (language-switch) */
+width:300vw;
+height:100vh;
+z-index:8900;
+cursor:pointer;
+}
+
+
+#div-loading
+{
+position:absolute;
+position:fixed;
+left:45vw;
+top:33vh;
+z-index:99999;
+}
+
+#div-loading > svg
+{
+width:10vw;
+height:10vw;
+}
+
+.div-loading-area
+{
+position:absolute;
+margin: 0 auto 0 auto;
+top:4em;
+left: 0;
+right: 0;
+text-align: center;
+z-index:997;
+overflow:visible;
+}
+
+.sym-loading-area
+{
+display:inline-block;
+width:7vw;
+height:7vw;
+}
+
+.sym-rotate 
+{
+animation: 4s linear infinite anim-rotate;
+transform-origin: 50% 50%;
+}
+  
+@keyframes anim-rotate 
+{
+0% { transform: rotateZ(0deg); }
+100% { transform: rotateZ(360deg); }
+}
+
+/* ---------------------------------- chapter MISC ---------------------------- */
+
+.a-img-bigger
+{
+z-index:9;
+}
+
+.clear-both,
+section,
+body>footer
+{
+clear:both;
+}
+
+
+#iframe-login
+{
+position:fixed;
+top:20vh;
+left:25%;
+width:50%;
+height:60vh;
+z-index:99999;
+overflow:visible;
+resize: both;
+}
+
+input.readonly,
+input:disabled,
+label
+{
+cursor:inherit !important;  /* in some browsers label have no inherit by default, TODO: others as well? */  
+}
+
+
+.dum
+{
+position: fixed;
+top:-200em;
+opacity: 0.01;
+height: auto;
+width: auto;
+white-space: nowrap;
+}
+
+
+body.screen-small.portrait .hide-for-mobile
+{
+display:none;  
+}
+
+::-webkit-scrollbar
+{
+width: 0px;
+height:0px;
+background: transparent;
+}
+
+
+nav
+{
+max-width: min(100%, 100vw);
+max-height: min(100%, 100vh);
+overflow: scroll; 
+-ms-overflow-style: none;
+scrollbar-width: none;
+}
+
+
+/* ------------------------- easy classes ------------- */
+
+.no-scrollbar
+{
+-ms-overflow-style: none;
+scrollbar-width: none;
+}
+
+.cursor-pointer
+{
+cursor:pointer;
+}
+
+
+.flex  /* can be used as show in case of flex */
+{
+display: flex;
+flex-direction:row;
+}
+
+.fit
+{
+width: -moz-fit-content;
+width: fit-content;
+}
+
+.hide
+{
+display:none !important;
+}
+
+.trans
+{
+opacity:0.0 !important;
+}
+
+.invisible
+{
+opacity: 0.0 !important;
+cursor: auto;
+pointer-events: none;
+z-index: -1;
+}
+
+.nowrap
+{
+white-space: nowrap;
+flex-wrap: nowrap;
+}
+
+div > a
+{
+display: inline-block;
+height:100%;
+width:100%;
+}
+
+
+
+

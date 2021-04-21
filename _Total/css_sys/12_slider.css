@@ -1,0 +1,228 @@
+
+
+/*                 SLIDER CSS                     */
+
+/* Note: Always use seconds to make JS work!      
+
+TODO: Support Milliseconds a.s.o.
+*/
+
+
+.box-grid-slider
+{
+/* -------------- */
+
+--slider-sec: 6s;                   /* the seconds for one slide */
+--fade-sec: 2s;                     /* time of fading, or CSS-Effect, 0 if none */
+
+/* -------------- */
+
+--slider-nav-top: 11em;
+--slider-nav-width: 2em;
+--slider-nav-opacity: 0.4;
+--slider-nav-padding: 0.3em;
+
+/* -------------- */
+
+--play-state: running;              /* paused or running */
+--slider-direction: normal;         /* normal | reverse | alternate | alternate-reverse */
+--slider-iteration: infinite;       
+--slider-init-sec: 3s;              /* initial delay at first start, important for JS-soon-loading. Note: Keep it <= 3 to start JS-play immediatelly!!! */
+
+/* -------------- */
+
+overflow-x: scroll;    
+-ms-overflow-style:none;
+scrollbar-width:none;
+}
+
+
+.box-grid-slider > .box-grid-body
+{
+display:flex;
+flex-direction:row;
+flex-wrap:nowrap;
+width:calc(100% * var(--slider-count));
+}
+
+.box-grid-slider > .box-grid-body > .box
+{
+box-sizing: border-box;
+display:block;
+width:calc(100% / var(--slider-count));
+padding:0;
+margin:0;    
+}
+
+
+.box-grid-slider > .box-grid-body > .box > picture > img
+{
+width:100%;
+height:auto;
+}
+
+body.portrait .box-grid-slider > .box-grid-body > .box > picture > img
+{
+width:auto;
+height:100vh;
+float:right;
+right:-1em;
+}
+
+
+/* -------------- slider navigation ----------- */
+
+.slider-prev
+{
+top:var(--slider-nav-top);
+left:0em;
+}
+
+.box-grid-slider.no-lr > .slider-prev,
+.box-grid-slider.leftmost > .slider-prev
+{
+display:none;    
+}
+
+.slider-next
+{
+top:var(--slider-nav-top);
+right:0em;
+}
+
+.box-grid-slider.no-lr > .slider-next,
+.box-grid-slider.rightmost > .slider-next
+{
+display:none;    
+}
+
+.slider-nav img
+{
+width:var(--slider-nav-width);
+height:auto;
+margin:0;
+}
+
+.slider-nav
+{
+display:block;
+position:absolute;
+z-index:99;
+cursor:pointer;
+opacity:var(--slider-nav-opacity);
+padding:var(--slider-nav-padding);
+}
+
+.slider-play,
+.slider-stop
+{
+top:calc(var(--slider-nav-top) + 4em);
+right:0em;
+}
+
+.box-grid-slider.no-ps > .slider-play,
+.box-grid-slider.running > .slider-play
+{
+display:none;    
+}
+
+.box-grid-slider.no-ps > .slider-stop,
+.box-grid-slider:not(.running) > .slider-stop
+{
+display:none;    
+}
+
+.box-grid-slider.no-nav > .slider-nav
+{
+display:none;    
+}
+
+
+/* -------------- slider animation -------------  */
+
+@keyframes slider 
+{
+0% {transform: translateX(0%); }
+10% {transform: translateX(0%); }
+90% {transform: translateX( calc(-100% + (100% / var(--slider-count))) );}
+100% {transform: translateX( calc(-100% + (100% / var(--slider-count))) );}
+}
+
+/* use class 'play-css' if you want to avoid 'play-js' take over */ 
+.box-grid-slider.play-css > .box-grid-body,
+.box-grid-slider.play:not(.play-js) > .box-grid-body
+{
+animation-name: slider;
+animation-duration: calc( (var(--slider-sec) + var(--fade-sec)) * var(--slider-count) * 2);  /* *2 because CSS movement otherwise seems stressy comapred to js-speed-feeling ?!) */
+animation-direction: var(--slider-direction);
+animation-iteration-count: var(--slider-iteration);
+animation-timing-function: linear; 
+animation-delay: var(--slider-init-sec); 
+animation-play-state: var(--play-state); 
+}
+
+
+.box-grid-slider.play-js-only > .box-grid-body,
+.box-grid-slider.out > .box-grid-body
+{
+animation-play-state: paused !important; 
+}
+
+
+@keyframes fadeout 
+{
+0% {opacity:1; }
+100% {opacity:0; }
+}
+
+@keyframes fadein 
+{
+0% {opacity:0; }
+100% {opacity:1; }
+}
+
+.fade-out
+{
+animation-name: fadeout;
+animation-duration: var(--fade-sec);
+z-index:1;
+}
+
+.fade-in
+{
+animation-name: fadein;
+animation-duration: var(--fade-sec);
+z-index:2;
+}
+
+.box-grid-slider.play-js > .box-grid-body > .box
+{
+opacity:0;
+z-index:-1;
+position:absolute;
+top:0px;
+left:0px;
+}
+
+.box-grid-slider.play-js > .box-grid-body > .box.init,
+.box-grid-slider.play-js > .box-grid-body > .box.active
+{
+opacity:1;
+z-index:3;
+position:relative;
+}
+
+
+.box-grid-slider.play-js > .box-grid-body > .box.active.fade-out
+{
+z-index:1;
+position:absolute;
+}
+
+
+.box-grid-slider.play-js > .box-grid-body,
+.box-grid-slider.play-js > .box-grid-body > .box
+{
+width:100%;
+}
+

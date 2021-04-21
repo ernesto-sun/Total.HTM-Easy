@@ -1,0 +1,40 @@
+
+
+body.login-total #topline-hamburger:after
+{
+font-family:FontAwesome;
+content:"\f013";
+text-shadow: -0.05em 0 black, 0 0.05em black, 0.05em 0 black, 0 -0.05em black;
+position:absolute;
+top:0em;
+right:0.1em;
+font-size:1.4em;
+color:green;
+z-index:99;
+cursor:pointer;
+}
+
+body.login-total.changed #topline-hamburger:after
+{
+color:gold;
+}
+
+#a-make .fa
+{
+color:green;
+text-shadow: -0.05em 0 black, 0 0.05em black, 0.05em 0 black, 0 -0.05em black;
+}
+
+body.login-total.changed #a-make .fa
+{
+color:gold;
+}
+
+
+#menu-top-admin
+{
+min-width:20em;
+display:flex;
+flex-wrap: wrap;
+flex-direction: row-reverse;
+}

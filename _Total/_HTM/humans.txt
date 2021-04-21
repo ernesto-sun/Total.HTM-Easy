@@ -1,0 +1,19 @@
+# TEAM
+
+	Tech: Ernesto Sun
+	Contact: info [at] exalot.com
+	Location: Austria
+
+# THANKS
+
+	Nature: Everything
+
+# SITE
+	Last Update: 2021
+	Language: German, Spanish, English
+	Doctype: HTML5
+
+# TECHNOLOGY COLOPHON
+
+	Web Standards: HTML5, CSS3, JS
+	IDE: Notepad++, Inkscape, Gimp, ...

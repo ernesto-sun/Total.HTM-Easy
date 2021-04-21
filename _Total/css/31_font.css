@@ -1,0 +1,141 @@
+
+
+/* Note: The following fonts are a selection of 'web safe' fonts. More info at ../font/_README.txt 
+ Note: If a font-family-name consists of several words, use quotes around it
+
+var _TOOL_FONT = [
+["Default", "inherit"],
+["Arial", "arial, sans-serif"],
+["Arial Black", "\"arial black\", sans-serif"],
+["Arial Narrow", "\"arial narrow\", sans-serif"]
+["Baskerville", "baskerville, serif"],
+["Brush Script MT", "\"brush script mt\", cursive"],
+["Courier New", "\"courier new\", monospace"],
+["Georgia", "georgia, serif"],
+["Lucida Bright", "\"lucida bright\", serif"],
+["Lucida Sans Typewriter", "\"lucida sans typewriter\", monospace"],
+["Palatino", "palatino, serif"],
+["Papyrus", "papyrus, fantasy"],
+["Tahoma", "tahoma, sans-serif"],
+["Times New Roman", "\"times new roman\", serif"],
+["Trebuchet MS", "\"trebuchet ms\", sans-serif"],
+["Verdana", "verdana, sans-serif"],
+];  
+
+*/
+s
+
+
+
+
+
+/* ---------------------------------------------------
+EXAMPLE: How to use custom font-files. 
+Note: Custom font-files can slow down your website. 
+
+@font-face
+{
+  font-family:'Montserrat';
+  src: url('../font/montserrat/MontserratRegular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face
+{
+  font-family:'MontserratBold';
+  src: url('../font/montserrat/MontserratSemiBold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+.font-default
+{
+font-family:Montserrat;
+}
+
+---------------------------------------------------
+*/
+
+body,
+.font-default
+{
+font-family: Verdana, Arial, sans-serif;
+font-weight: normal;  
+}
+
+h1, h2, h3, h4, h5, h6,
+.font-header
+{
+font-family: "Arial Black", Arial, sans-serif;
+font-weight: bolder;  
+}
+
+label
+{
+font-family: "Arial Black", Arial, sans-serif;
+font-size: 1.01em;
+font-weight: bold;  
+}
+
+input, textarea, select, 
+.div-option > label
+{
+font-family: Arial, sans-serif;
+font-size: 0.97em;
+font-weight: normal;  
+}
+
+q
+{
+font-family: "Lucida Bright", Lucida, serif;
+font-style: italic;
+}
+
+
+.font-small
+{
+font-size:0.91em;
+}
+
+.font-big
+{
+font-size:1.33em;
+}
+
+
+h2
+{
+font-size:2.7em;
+}
+
+h3
+{
+font-size:2.0em;
+}
+
+h4
+{
+font-size:1.6em;
+}
+
+h5
+{
+font-size:1.4em;
+}
+
+h6
+{
+font-size:1.3em;
+}
+
+
+header a,
+footer a,
+main a,
+nav a
+{
+font-weight:bold;
+}
+

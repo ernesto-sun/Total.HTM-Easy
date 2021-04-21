@@ -1,0 +1,84 @@
+
+
+lang
+{
+display:none;
+}
+
+html[lang="de"] lang[lang="de"],
+html[lang="es"] lang[lang="es"],
+html[lang="en"] lang[lang="en"],
+html[lang="hu"] lang[lang="hu"]
+{
+display:inline;
+}
+
+#topline-lang
+{
+margin-top:13%;
+}
+
+.lang-choice
+{
+display:flex;
+flex-direction:row;    
+cursor:pointer;
+}
+
+.lang-choice.active
+{
+z-index:9000;
+}
+
+
+.lang-list
+{
+display:flex;
+flex-direction:row;    
+}
+
+.lang-list > img
+{
+height:1.5em;
+width:2em;
+margin-right:0.2em;
+order: 2;
+}
+
+.lang-choice > .lang-list
+{
+flex-direction: column;    
+}
+
+.lang-choice > .lang-list > img
+{
+display: none;
+margin-bottom: 0.4em;
+}
+
+.lang-choice.active > .lang-list > img
+{
+display: inline;
+}
+
+html[lang="de"] .lang-choice img.lang-de,
+html[lang="en"] .lang-choice img.lang-en,
+html[lang="es"] .lang-choice img.lang-es,
+html[lang="hu"] .lang-choice img.lang-hu
+{
+display: inline;
+order: 1;
+}
+
+.lang-choice .svg-triangle
+{
+margin:0.1em 0 0 0.2em;
+height:1.2em;
+}
+
+.lang-choice.active .svg-triangle
+{
+transform:rotate(60deg);
+transition: transform 0.3s linear;
+}
+

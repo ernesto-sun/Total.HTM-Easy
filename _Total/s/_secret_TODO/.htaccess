@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Static Secret Files"
+AuthUserFile C:/your/folder/to/www/Total.HTM-Easy/_Total/s/s/.htpasswd
+require valid-user

@@ -1,0 +1,44 @@
+
+#login-form
+{
+margin:1em auto 0 auto;
+}
+
+#login-form .div-input
+{
+margin:0.5em 0 0 0;
+}
+
+#login-form label
+{
+white-space:no-wrap;
+display:block;
+font-weight:bold;
+}
+
+#login-form input
+{
+display:block;
+width: 10em;
+padding:0.5em;
+}
+
+#login-form button
+{
+margin:0.9em 0 0 0;
+padding: 0.5em;
+width: 9.5em;
+white-space:no-wrap;
+font-size:1.2em;
+}
+
+#div-login
+{
+max-width:24em;
+padding:0.3em 0;
+}
+
+#login-dialog-here #div-login
+{
+margin:0.5em 0em 3em 1em;    
+}

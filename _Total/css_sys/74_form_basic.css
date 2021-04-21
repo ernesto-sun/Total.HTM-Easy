@@ -1,0 +1,137 @@
+
+/* Here are only the basics for login-form, buttons, ... More at /css_lazy/form.css */ 
+
+:root
+{
+--inp-col-readonly:      #666666;
+
+--inp-col-bg-dirty:      #fffbe5;
+--inp-col-bg-invalid:    #fcd6d4;
+
+--inp-col-bg:            #ffffff;
+--inp-col-fg:            var(--col-fg);
+--inp-padding:           0.2em 0.5em; 
+--inp-border:            0.1em outset var(--col-fg);
+--inp-border-radius:     0.2em;
+--inp-shadow:            0.05em 0.1em 0.12em #999999;     
+    
+--but-col-bg:            #335566; 
+--but-col-fg:            #ffffff; 
+--but-sym-filter:        brightness(0) invert(1);  /* this filter-trick makes the button symbols white */
+--but-padding:           0.2em 2em;
+--but-bg-gradient:       linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.1) 51%, rgba(255,255,255,0.3) 100%);
+--but-border:            0.1em outset var(--but-col-bg);
+--but-border-radius:     0.3em;
+--but-shadow:            0.05em 0.1em 0.12em #999999;
+}
+
+
+.txt > input   /* later at form.css more inputs are set */
+{
+border: var(--inp-border);
+border-radius: var(--inp-border-radius);
+box-shadow: var(--inp-shadow);     
+color: var(--inp-col-fg);
+padding: var(--inp-padding);     
+background-color: var(--inp-col-bg);
+}
+
+
+.like-but,
+.control.but,
+button
+{
+margin: 1.5em auto 1em auto;
+padding: var(--but-padding);
+
+color: var(--but-col-fg);
+background: var(--but-bg-gradient), var(--but-col-bg);
+border: var(--but-border);
+border-radius: var(--but-border-radius);
+box-shadow: var(--but-shadow);
+
+display: flex;
+flex-direction: row;
+flex-wrap: nowrap;
+align-items: center;
+justify-items: center;
+text-align: center;
+
+width: -moz-fit-content;
+width: fit-content;
+}
+
+
+.like-but span
+{
+color: var(--but-col-fg);
+font-weight: normal;
+}
+
+.like-but .sym,
+button .sym
+{
+filter: var(--but-sym-filter);
+}
+
+
+.like-but.red,
+.control.but.red,
+button.red
+{
+background: var(--but-bg-gradient), var(--col-red);
+border-color: var(--col-red);
+}
+
+.like-but.green,
+.control.but.green,
+button.green
+{
+background: var(--but-bg-gradient), var(--col-green);
+border-color: var(--col-green);
+}
+
+.like-but.orange,
+.control.but.orange,
+button.orange
+{
+background: var(--but-bg-gradient), var(--col-orange);
+border-color: var(--col-orange);
+}
+
+.control
+{
+display:flex;
+flex-direction:row; 
+}
+
+.control:not(.but)
+{
+margin:0.25em auto 0.5em auto;
+align-items:flex-start;    
+}
+
+.control:nth-child(1)
+{
+margin-top:0em;
+}
+
+label
+{
+font-weight: bold;
+} 
+
+label[for],
+div.chk > input,
+div.div-option > input
+{
+cursor: pointer !important; 
+} 
+
+.control > label
+{
+display: inline-block;
+min-width: 10em;
+}
+
+

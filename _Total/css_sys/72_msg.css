@@ -1,0 +1,67 @@
+
+
+
+#msg-outer
+{
+position:fixed;
+top:0em;
+left:0em;
+width:100%;
+z-index:2000000;  /* higher than lightbox and popup! */
+margin:auto;
+}
+
+#msg-outer div.err,
+#msg-outer div.warn,
+#msg-outer div.msg
+{
+width:100%;
+margin:auto;
+padding:0.1em 2em;
+box-shadow:0.1em 0.1em 0.3em #666;
+border-radius:0.3em;
+background:rgba(255, 255, 255, 0.7);
+}
+
+#msg-outer div.msg
+{
+border: 0.1em solid var(--col-green);
+}
+
+#msg-outer div.err::before,
+#msg-outer div.warn::before,
+#msg-outer div.msg::before
+{
+content: "";
+position: absolute;
+top: 0; 
+left: 0;
+width: 100%; 
+height: 100%;  
+opacity: 0.3;
+z-index:1;    
+background-color: var(--col-green);
+pointer-events: none;
+}
+
+#msg-outer div.warn
+{
+border: 0.1em solid var(--col-orange);
+}
+
+#msg-outer div.warn::before
+{
+background-color: var(--col-orange);
+}
+
+#msg-outer div.err
+{
+border:0.1em solid var(--col-red);
+color: var(--col-red);
+}
+
+#msg-outer div.err::before
+{
+background-color: var(--col-red);
+}
+

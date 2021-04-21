@@ -1,0 +1,96 @@
+
+
+html
+{
+background: var(--col-bg);   
+}
+
+body
+{
+color: var(--col-fg);
+}
+
+#main
+{
+background-color: var(--col-bg-main);
+}
+
+#main > *
+{
+background-color: transparent; /* HACK: that avoids the strange WYSIWYG at chrome to set background-color */
+}
+
+
+#footer
+{
+background-color: var(--col-bg);
+}
+
+
+
+#topline-bg
+{
+background: var(--topline-bg);
+}
+
+header a,
+footer a,
+main a,
+nav a
+{
+color: var(--col-fg);
+}
+
+.tab
+{
+border-color:var(--col-fg);
+}
+
+.tab .tab-item
+{
+border-color: var(--col-fg);
+}
+
+.tab .tab-item.active
+{
+background: var(--col-active) !important;
+}
+
+.bg-free
+{
+background: var(--bg-free);   
+}
+
+
+#lightbox-content
+{
+background: var(--col-bg);
+box-shadow: 0.2em 0.2em 1em var(--col-fg);
+}
+
+#lightbox-sym-close
+{
+background: var(--col-bg);
+}
+
+#popup-content,
+#lightbox-content
+{
+color: var(--col-fg);
+}
+
+svg
+{
+fill: var(--col-fg);
+stroke: none;
+}
+
+.red
+{
+color: var(--col-red);    
+}
+
+.green
+{
+color: var(--col-green);
+}
