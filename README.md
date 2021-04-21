@@ -13,9 +13,9 @@ Total.HTM Easy is a website making strategy with focus on *web standards*. You k
 * JavaScript (Vanilla, EcmaScript)
 * JSON, SVG, font, media, ...
 
-Total.HTM Easy is Open Source using the JSON-license, that is based on the MIT-license. *Yes, you can* use Total.HTM Easy even for commercial purposes.    
+Total.HTM Easy is Open Source using the JSON-license, that is based on the MIT-license. *You can* use Total.HTM Easy even for commercial purposes.    
 
-The demo-website is the project-website, created with Total.HTM-Easy: https://exa.run/Total.HTM-Easy/
+The demo-website is the project-website, created with Total.HTM Easy itself: https://exa.run/Total.HTM-Easy/
 
 All websites of http://exa.run are made with Total.HTM Easy.
 
