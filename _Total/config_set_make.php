@@ -78,8 +78,8 @@ $set_config = array (
 
 'empty_release_before_copy' => 1,   // If activated, the complete release-dir is deleted recursively before copy of new release.
 
-'api_key_make' => 'kjdsa8798798d8d8d888d',  // ?ak=...   API-Key for the MAKE-script
-'api_key_make_allow' => 1,                // Only activate this if you know what you do!
+'api_key_make' => 'kjdsa8798798d8d8d888d2',  // ?ak=...   API-Key for the MAKE-script
+'api_key_make_allow' => 0,                // Only activate this if you know what you do!
 
 );
 
