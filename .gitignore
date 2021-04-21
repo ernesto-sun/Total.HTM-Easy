@@ -1,2 +1,6 @@
+.gitignore
 Total.HTM-Easy.code-workspace
-
+_Total/config_dont_touch.php
+_Total/config_set_make.php
+_Total/config_script.php
+_Total/_offline
