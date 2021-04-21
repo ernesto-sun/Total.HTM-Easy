@@ -23,6 +23,8 @@ Each type of code/file has it's typical naming-conventions, spaces, lines, ...
 * KISS: Keep It Small and Simple
 * Code speaks: Clean readable code preferred over all-too-many comments. 
 
+Please read our [Coding Guidelines](coding-style.md)
+
 
 ## Our Way of Developing
 
@@ -40,4 +42,4 @@ has to offer. Thank You for sharing your knowledge!
 When you submit to this project, your submissions are understood to be 
 under the same [JSON License](https://www.json.org/license.html) that covers this project.
 
-See the [project license](https://github.com/ernesto-sun/Total.HTM-Easy/blob/main/LICENSE.md) file for details.
+See the [project license](LICENSE.md) file for details.
