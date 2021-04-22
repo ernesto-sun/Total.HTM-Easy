@@ -9,7 +9,7 @@ working document. It is public so that collaborators can know whats going on in 
 
 TODO: use ``` <dialog> and <time> ```
 
-TODO: Speed-Detection with PerformanceObserver
+TODO: Speed detection with PerformanceObserver
 
 TODO: Make section.sub-list  AND section.sub_more
 
@@ -33,13 +33,11 @@ TODO: RES? Expert?!: Reduce even further Main-Thread-Load. Info. e.g. https://we
 
 TODO: Make _FRAME() Ticker only running if necessary (runs all frames right now) 
 
-TODO: Make gallery together with box-grid data-dir
+TODO: Make gallery together with box-grid data-dir, Theme-Gallery bzw. Project-Gallery
 
 TODO: Footer more complete and Newsletter inside * Newsletter
 
 TODO: MAKE-feature: Dead-Link-Finding
-
-TODO: Improve Theme-Gallery bzw. Project-Gallery
 
 TODO: @media (prefers-color-scheme: dark)    @media (prefers-reduced-motion) 
 
