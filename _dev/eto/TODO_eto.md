@@ -1,5 +1,5 @@
 
-Note: Is is a public private file. You can read it but it's really just a personal 
+Note: This is a public private file. You can read it but it's really just a personal 
 working document. It is public so that collaborators can know whats going on in dev.
 
 
@@ -7,7 +7,7 @@ working document. It is public so that collaborators can know whats going on in 
 ## TODO-List
 ------------------------------------------------------------------------------------
 
-TODO: use <dialog> and <time>
+TODO: use ``` <dialog> and <time> ```
 
 TODO: Speed-Detection with PerformanceObserver
 
