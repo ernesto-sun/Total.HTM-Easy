@@ -211,7 +211,7 @@ http://my-server/my-folder/_Total/config_script.php?ak=hd873d8h28h2
 
 ```
    
-Use the files that match ``` 'config_set_**.php' ``` to set your values. Don't 
+Use the files that match ``` 'config_set_*.php' ``` to set your values. Don't 
 forget to call the 'config_script.php' to effectively write the changes.  	 
 
 
