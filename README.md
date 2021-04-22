@@ -44,15 +44,15 @@ HTML totally easy!
 
 ## What makes Total.HTM Easy so great? 
 
-* Recommended **web standard* use
+* Recommended **web standard** use
 * Save time and headache, optimizing done by **MAKE-script**
 * **Fit for business**, very fast and stable static output
 * Search Engine Optimized, **SEO**, all good websites need
 * No need to update, web standards get **never out of date**
-* Barrier-free **UX* (user experience).
-* Mobile ready at highest speeds at all display sizes    
-* Everybody can **start learning* being a maker in the real web   
-* Lots of nice, **useful stuff* included, such as slideshow
+* Barrier-free **UX** (user experience).
+* **Mobile ready** at highest speeds at all display sizes    
+* Everybody can **start learning** being a maker in the real web   
+* Lots of nice, **useful stuff** included, such as slideshow
 
 Please realize one technical fact: There is nothing better than HTML, CSS & JS in the web. 
 This is what any other system would produce as output anyway. 
@@ -66,18 +66,18 @@ More good reasons to use Total.HTM Easy: https://exa.run/Total.HTM-Easy/#develop
 
 ## What it is
 
-* Total.HTM Easy is a website, and a website-template
-* Total.HTM Easy is a SPA (Single Page Application)
-* Total.HTM Easy is a PWA (Progressive Web Application)
-* Total.HTM Easy is 100% open and free
-* Total.HTM Easy is 100% web standards
+* Total.HTM Easy is a website, and a **website-template**
+* Total.HTM Easy is a **SPA** (Single Page Application)
+* Total.HTM Easy is a **PWA** (Progressive Web Application)
+* Total.HTM Easy is 100% open and **free**
+* Total.HTM Easy is 100% web **standards**
 * Total.HTM Easy is framework-free
-* Total.HTM Easy is responsive, mobile-first
-* Total.HTM Easy is a Static Site Generator (SSG)
-* Total.HTM Easy is a set of HTML5 best practice
-* Total.HTM Easy is strategy, paradigm, architecture
-* Total.HTM Easy is just one good way to make websites
-* Total.HTM Easy is a statement towards an ethical internet
+* Total.HTM Easy is **responsive**, mobile-first
+* Total.HTM Easy is a **Static** Site Generator (SSG)
+* Total.HTM Easy is a set of **HTML5** best practice
+* Total.HTM Easy is strategy, paradigm, **architecture**
+* Total.HTM Easy is just **one good way** to make websites
+* Total.HTM Easy is a statement towards an **Ethical Internet**
 
 
 ## What it is NOT
@@ -91,7 +91,7 @@ More good reasons to use Total.HTM Easy: https://exa.run/Total.HTM-Easy/#develop
 * Total.HTM Easy is not adding to Clouds-of-Others, Data-Silos, Privacy-Dealing, etc. 
 * Total.HTM Easy is not complicated ;)
 
-Don't waste your time with big players and confusing pseudo-freedoms. Play your own game! Work with the real Internet, just the way it was intended from the beginnings on. Be a free actor in the WWW. Start now! 
+Don't waste your time with big players and confusing pseudo-freedoms. Play your own game! Work with the real Internet, just the way it was intended from the beginnings on. Be a free actor in the World Wide Web. **Start now!** 
 
 Note: The fact that Total.HTM Easy is not a framework or CMS, does not mean you could not connect any framework you liked. Really, with web standards you can do anything. Show us your cool combies, such as with Vue, or with a Headless CMS at the backend.  
 
@@ -129,7 +129,7 @@ and /css/X.css or in other ways you like.
 
 Note: For minimal use you dont need the folders /_login/ and /_make/
 
-Tip: This minimal use can be a great strategy for prototyping.  
+Tip: This minimal use can be a great strategy for **prototyping**.  
 
 Note: In fact, the **'Minimal Use' is the killer-feature of Total.HTM Easy**, 
 and this is why the project has its name. You can open the file just in any 
@@ -349,7 +349,7 @@ TODO: A better versioning-strategy that fits into the GitHub-ecosystem.
 
 ## License
 
-This project is licensed under the JSON License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the **JSON License** - see the [LICENSE.md](LICENSE.md) file for details.
 
 
 
