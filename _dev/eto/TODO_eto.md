@@ -25,7 +25,7 @@ TODO: Make slider-stop stop at the prev slide if fade less than 40%
 
 TODO: MAKE-Script: a-img-bigger on config 'image_link_to_big' => 1, 'image_link_to_big_slider' => 1,
 
-TODO: CSS-Cutdown: Interesting: <link href="portrait.css" rel="stylesheet" media="orientation:portrait">
+TODO: CSS-Cutdown: Interesting: ``` <link href="portrait.css" rel="stylesheet" media="orientation:portrait"> ```
 
 TODO: Dialog-BG in Theme dark, alu, etc.
 
@@ -39,11 +39,11 @@ TODO: Footer more complete and Newsletter inside * Newsletter
 
 TODO: MAKE-feature: Dead-Link-Finding
 
-TODO: @media (prefers-color-scheme: dark)    @media (prefers-reduced-motion) 
+TODO:  ``` @media (prefers-color-scheme: dark)    @media (prefers-reduced-motion) ```
 
 TODO: Use role="dialog"  role="alertdialog"  role="search"  role="tabpanel" role="tab"
 
-TODO: It is possible to override the default behavior and preload web font resources using <link rel="preload">, the CSS font-display property, and the Font Loading API.
+TODO: It is possible to override the default behavior and preload web font resources using ``` <link rel="preload"> ```, the CSS font-display property, and the Font Loading API.
 
 
 ------------------------------------------------------------------------------------
@@ -51,11 +51,17 @@ TODO: It is possible to override the default behavior and preload web font resou
 ------------------------------------------------------------------------------------
 
 SKIP: IP-Block (Because Hoster-Stuff and easy in API-head if needed) 
+
 OK: Auto-Login from Browser-Cache
+
 OK: multiple login of same user
+
 OK: function TIT  FRAME performance / Test /skip / Intersectionobserver
+
 SKIP: Events onoffline, ononline     not well supported
+
 OK: AES-CBC + HMAC + Salt + Random + Log 
+
 SKIP: https://github.com/drify/UglifyJS.php   statt MinifyJS
 
 
