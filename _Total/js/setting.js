@@ -1,13 +1,15 @@
- 
-/* --------------------     UX Settings  ------------------------ */
+// ---------------------------------------------------------------------------
+// --------------------          UX Settings       ------------------------ */
+// ---------------------------------------------------------------------------
 //
 // UX means: User Experience. Another term for 'User Interface'.
 //
 // IMPORTANT: The default-language set at <html lang="xx"> shall be 
-// the same language as defined below as the 'Default Language'. 
-// Changing the default langauge at <html> for testing is ok, but
-// your website needs a clear language-concept, and translations
-// must be correctly set at the file 'lang.js'
+// the same language as defined a few lines below as 
+// DEFAULT_LANGUAGE. 
+// Changing the default langauge at <html lang="xx"> for testing is ok, 
+// but your website needs a clear language-concept, and translations
+// must be correctly set at the file 'lang.js'.
 //
 // Note: UX Settings are stored 'per Browser'. Locally. Easy Reset.
 // 
@@ -24,7 +26,7 @@ var _SET_UX=
 ["chapter-general", "chapter",      "General Settings",         1],             // TODO: Chapter have 0/1 for collapsed/expanded
 ["chk-fullscreen",  "chk",          "Fullscreen Mode",          0],
 ["chk-menu-out",    "chk",          "Hide Main Menu",           0],
-["com-lang",        "com-radio",    "Language",                "en", 0],          // <-- Defaut language is overwritten by <html lang='xx'> 
+["com-lang",        "com-radio",    "Language",                "en", 0],          // <-- DEFAULT_LANGUAGE. Overwritten by <html lang='xx'> 
 ["com-tz",          "com",          "Timezone",                 0, 0],            // com: can-zero
 ["but-reset",       "but",          "Reset Client-Settings*",  "gray"],       // button has no default value, but classes instead
 ["lab-reset",       "lab",          "* Non-critical browser-settings like table-sorting or visual preferences."],      

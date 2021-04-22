@@ -84,19 +84,3 @@ Trebuchet MS 				, sans-serif
 Verdana						, sans-serif
 
 
-
-
-_b.CSS({"font-family": "Didot"});
-
-
-
-<details> … </details>
-Used for additional information. User has
-the option to view or hide this.
-<summary> … </summary>
-Used as a heading for the above tag. Is always
-visible to the user.
-
-
-<dialog>
-<time>

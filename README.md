@@ -6,14 +6,14 @@ NoCMS. HTML.
 
 Your web rocks! 
 
-Total.HTM Easy is a website making strategy with focus on *web standards*. You know, that is that thing that all browsers are supporting the current century, or at least the next decades. Namely: 
+Total.HTM Easy is a website making strategy with focus on **web standards**. You know, that is that thing that all browsers are supporting the current century, or at least the next decades. Namely: 
 
 * HTML 5
 * CSS 3
 * JavaScript (Vanilla, EcmaScript)
 * JSON, SVG, font, media, ...
 
-Total.HTM Easy is Open Source using the JSON-license, that is based on the MIT-license. *You can* use Total.HTM Easy even for commercial purposes.    
+Total.HTM Easy is Open Source using the JSON-license, that is based on the MIT-license. **You can* use Total.HTM Easy even for commercial purposes.    
 
 The demo-website is the project-website, created with Total.HTM Easy itself: https://exa.run/Total.HTM-Easy/
 
@@ -44,20 +44,20 @@ HTML totally easy!
 
 ## What makes Total.HTM Easy so great? 
 
-* Recommended *web standard* use
-* Save time and headache, optimizing done by *MAKE-script*
-* *Fit for business*, very fast and stable static output
-* Search Engine Optimized, *SEO*, all good websites need
-* No need to update, web standards get *never out of date*
-* Barrier-free *UX* (user experience).
+* Recommended **web standard* use
+* Save time and headache, optimizing done by **MAKE-script**
+* **Fit for business**, very fast and stable static output
+* Search Engine Optimized, **SEO**, all good websites need
+* No need to update, web standards get **never out of date**
+* Barrier-free **UX* (user experience).
 * Mobile ready at highest speeds at all display sizes    
-* Everybody can *start learning* being a maker in the real web   
-* Lots of nice, *useful stuff* included, such as slideshow
+* Everybody can **start learning* being a maker in the real web   
+* Lots of nice, **useful stuff* included, such as slideshow
 
 Please realize one technical fact: There is nothing better than HTML, CSS & JS in the web. 
 This is what any other system would produce as output anyway. 
 
-*Who told you, you could not master real web technology yourself?*
+**Who told you, you could not master real web technology yourself?**
 
 Check out Total.HTM Easy! The web hero tool.
 
@@ -131,7 +131,7 @@ Note: For minimal use you dont need the folders /_login/ and /_make/
 
 Tip: This minimal use can be a great strategy for prototyping.  
 
-Note: In fact, the *'Minimal Use' is the killer-feature of Total.HTM Easy*, 
+Note: In fact, the **'Minimal Use' is the killer-feature of Total.HTM Easy**, 
 and this is why the project has its name. You can open the file just in any 
 local web browser, without setting up anything. 
 
@@ -211,7 +211,7 @@ http://my-server/my-folder/_Total/config_script.php?ak=hd873d8h28h2
 
 ```
    
-Use the files that match ``` 'config_set_*.php' ``` to set your values. Don't 
+Use the files that match ``` 'config_set_**.php' ``` to set your values. Don't 
 forget to call the 'config_script.php' to effectively write the changes.  	 
 
 
@@ -296,7 +296,7 @@ reduced.
 * [jsmin-php](https://github.com/rgrove/jsmin-php) (c) 2002 Douglas Crockford  (www.crockford.com)
 * [phpQuery](https://code.google.com/archive/p/phpquery/)
 
-Note: These external dependencies come _only_ with the MAKE-script. The website itself, and the release output have no dependency _at_all_.
+Note: These external dependencies come _only_ with the MAKE-script. The website itself, and the release output have **no dependency at all**.
 
 
 ## TODO and Ideas
@@ -343,7 +343,7 @@ TODO: A better versioning-strategy that fits into the GitHub-ecosystem.
 
 ## Authors
 
-* **[Ernesto Sun](http://ernesto-sun.com)** 
+* **[Ernesto Sun](http://ernesto-sun.com)* 
 * **You are welcome!**
 
 

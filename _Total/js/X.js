@@ -193,7 +193,7 @@ function X_input(d, v)
 // ---------------------------------------------------------------------------
 
 // From here on your custom functions. 
-// Recommendation: User XX_ as prefix, that makes text-finding easy etc. 
+// Recommendation: Use XX_ as prefix, that makes text-finding more easy etc. 
 
 // ---------------------------------------------------------------------------
 function XX_SM(b)   // slider-main control over Hamburger Menu
