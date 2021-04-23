@@ -163,6 +163,7 @@ some significant technical skills. Among others, you have these options:
 ### Regular Use on Your Own Server
 
 **You need to be able to upload files to a server of your choice.**
+
 **It's maybe helpful to have your own safe local web-server as well.**
 
 Your web-server needs to support:
