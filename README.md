@@ -108,8 +108,9 @@ You have a few options:
 
 ### Prerequisites
 
-**You need to be savvy navigating and editing HTML & CSS files,**
-**or at least willing to learn such a cool thing.**
+**You need to be savvy navigating and editing HTML & CSS files, ...**
+
+**... or at least willing to learn such a cool thing.**
 
 
 ### Minimal Use
@@ -136,7 +137,7 @@ and this is why the project has its name. You can open the file just in any
 local web browser, without setting up anything. 
 
 Note: Opening a locally stored HTML-website on file-basis in a modern web-browser
-can not harm your computer by definition. Browsers run local HTML-sides in a 
+can not harm your computer by definition. Browsers run local HTML-sites in a 
 safe 'sandbox'. Thus, the minimal use is risk-free. 
 
 Note: HTML and HTM are the same. Both are valid technical terms and valid file-extensions. We do prefer 'HTM' in filenames and code, and we prefer 'HTML' in natural language writing. Don't mind, just know: HTM and HTML is same same. 
