@@ -80,17 +80,19 @@ history.scrollRestoration = "manual";  // This is important not to make the brow
 
 --topline-bg:             linear-gradient(to bottom, rgba(255,255,255,0.8) 5%, rgba(255,255,255,0.6) 100%);
 
---topline-height:         3.9em;
---topline-height-shrunk:  2.8em;
+--topline-height:         3.6em;
+--topline-height-shrunk:  2.4em;
 
---tit-font-size:          2.7em;            /* Title Text Font Size if topline is not shrunk */
---tit-font-size-shrunk:   2.2em;            /* Title Text Font Size if topline is shrunk */
+--tit-font-size:          2.2em;            /* Title Text Font Size if topline is not shrunk */
+--tit-font-size-shrunk:   1.4em;            /* Title Text Font Size if topline is shrunk */
 
 --bg-free:              rgba(40,40,40,0.13);     /* near-transparent background-color of dialogs, popups, etc. */
 
 --menu-bg:                linear-gradient(to bottom, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.95) 50%, rgba(255,255,255,0.8) 51%, rgba(255,255,255,0.7) 100%);
 --menu-border:            0.1em solid #ffffff;
 --menu-border-radius:     0.4em;
+--menu-col-active:         linear-gradient(to right, #157899 0%,  #259292 100%);
+
 
 --col-green:            #32af32;          /* used for OK things, nice messages, ... */            
 --col-orange:           #fcd145;          /* used for something important, warnings, ... */
@@ -115,7 +117,6 @@ history.scrollRestoration = "manual";  // This is important not to make the brow
 
 <link href="../css_sys/21_font_default.css" rel="stylesheet" type="text/css"/>
 <link href="../css_sys/22_color_default.css" rel="stylesheet" type="text/css"/>
-<link href="../css_sys/28_layout_screen.css" rel="stylesheet" type="text/css"/>
 
 <!-- Custom CSS files: Realize your Design/CI by customizing them  -->
 <link href="../css/31_font.css" rel="stylesheet" type="text/css"/>
@@ -132,6 +133,7 @@ history.scrollRestoration = "manual";  // This is important not to make the brow
 <link href="../css_sys/74_form_basic.css" rel="stylesheet" type="text/css"/>
 <link href="../css_sys/75_popup.css" rel="stylesheet" type="text/css"/>
 <link href="../css_sys/76_lightbox.css" rel="stylesheet" type="text/css"/>
+<link href="../css_sys/77_effect.css" rel="stylesheet" type="text/css"/>
 <!--  END Lazy CSS  -->
 
 
@@ -397,19 +399,19 @@ See the documentation for more details about 'box-grid' and 'slider'.
       </a></div>
       <div class="li-sub">
         <ul>  
-          <li><div><a href="#vision"><span>
+          <li><div class="li-line"><a href="#vision"><span>
             <lang lang="en">Vision & Mission</lang>
             <lang lang="de">Vision & Mission</lang>
             <lang lang="es">Visión & Misión</lang>
             </span></a></div>
           </li>
-          <li><div><a href="#why"><span>
+          <li><div class="li-line"><a href="#why"><span>
             <lang lang="en">Good Reasons</lang>
             <lang lang="de">Gute Gründe</lang>
             <lang lang="es">Buenas Razones</lang>
             </span></a></div>
           </li>
-          <li><div><a href="#no-cms"><span>
+          <li><div class="li-line"><a href="#no-cms"><span>
             <lang lang="en">No CMS</lang>
             <lang lang="de">Kein CMS</lang>
             <lang lang="es">No CMS</lang>
@@ -428,19 +430,19 @@ See the documentation for more details about 'box-grid' and 'slider'.
       </a></div>
       <div class="li-sub">
         <ul>
-          <li><div><a href="#developer"><span>
+          <li><div class="li-line"><a href="#developer"><span>
           <lang lang="en">Developers</lang>
           <lang lang="de">Entwickler</lang>
           <lang lang="es">Desarrollador</lang>
           </span></a></div>
           </li>
-          <li><div><a href="#creator"><span>
+          <li><div class="li-line"><a href="#creator"><span>
             <lang lang="en">Creators</lang>
             <lang lang="de">Kreative</lang>
             <lang lang="es">Creativas</lang>
             </span></a></div>
           </li>
-          <li><div><a href="#strategy"><span>
+          <li><div class="li-line"><a href="#strategy"><span>
             <lang lang="en">Business</lang>
             <lang lang="de">Wirtschaft</lang>
             <lang lang="es">Empresas</lang>
@@ -459,19 +461,19 @@ See the documentation for more details about 'box-grid' and 'slider'.
       </a></div>
       <div class="li-sub">
         <ul>
-          <li><div><a href="#feature"><span>
+          <li><div class="li-line"><a href="#feature"><span>
             <lang lang="en">Features</lang>
             <lang lang="de">Funktionen</lang>
             <lang lang="es">Funcionas</lang>
             </span></a></div>
           </li>
-          <li><div><a href="#license"><span>
+          <li><div class="li-line"><a href="#license"><span>
             <lang lang="en">License</lang>
             <lang lang="de">Lizenz</lang>
             <lang lang="es">Licencia</lang>
             </span></a></div>
           </li>
-          <li><div><a href="#support"><span>
+          <li><div class="li-line"><a href="#support"><span>
             <lang lang="en">Support</lang>
             <lang lang="de">Support</lang>
             <lang lang="es">Soporte</lang>
@@ -1615,7 +1617,7 @@ Note: All sections mmust have a nice unique id="xxx". The unique ID for linking.
         <lang lang="en">Have <b>one short great sentence</b> describing your website. Use it everywhere.</lang>
       </span></li>
       <li><span>
-        <lang lang="de">Finden Sie <b>Schlüsselwürter und Themen</b> die das Potential haben neue Kunden anzuziehen.</lang>
+        <lang lang="de">Finden Sie <b>Schlüsselwörter und Themen</b> die das Potential haben neue Kunden anzuziehen.</lang>
         <lang lang="es">Encuentre <b>palabras clave y temas</b> que puedan llevar a los nuevos usuarios a su sitio web.</lang>
         <lang lang="en">Find <b>keywords and topics</b> that can lead new users to your website.</lang>
       </span></li>
@@ -3412,9 +3414,48 @@ Austria, Earth
 
 <!-- -------------------- FOOTER --------------------  -->
 <footer id="footer">
+ 
+  
   
 <div id="footer-top-top">
 
+
+  <div id="newsletter">
+
+    <div>
+
+      <div style="left:-0.15em;">
+
+        <div class="tit-top" style="left:0.1em; top:0.4em;">
+          <span>NEWSLETTER</span>
+        </div>
+    
+        <h3><span>
+          <lang lang='en'>Once a month</lang>
+          <lang lang='de'>Einmal monatlich</lang>
+          <lang lang='es'>Una vez al mes</lang>
+        </span></h3> 
+
+      </div>
+
+      <div class="tit-sub">
+        <span>
+        <lang lang='en'>Carefully selected dev news</lang>
+        <lang lang='de'>Ausgewählte Entwickler-News</lang>
+        <lang lang='es'>Noticias seleccionadas</lang>
+      </span>
+      </div> 
+    </div>
+  
+    <div id="form-newsletter" class="no-scrollbar">
+
+    </div>
+
+  </div>  <!-- end of #newsletter -->
+
+  <hr/>
+
+  
 <div id="div-feedback" class="box-grid width-100 box-grid-slider play no-ps no-lr">
 <div class="box-grid-body">
 
@@ -3467,6 +3508,7 @@ Austria, Earth
 
 
 <div id="footer-top">
+
 
 <div id="footer-logo-grid" class="box-grid box-grid-hscroll box-grid-full">
 <div class="box-grid-body">
@@ -3798,18 +3840,18 @@ with the recommendations, use the MAKE-script, and all shall be good.
   <ul id="menu-sys">
   
     <li class="slider-play hide">
-    <div>
+    <div class="li-line">
       <img class="sym cursor-pointer" src="../img/_but/but_play.png" alt="play" onclick="XX_SM(1)"/>
     </div>
     </li>
 
     <li class="slider-pause">
-    <div>
+    <div class="li-line">
       <img class="sym cursor-pointer" src="../img/_but/but_pause.png" alt="stop" onclick="XX_SM(0)"/>
     </div>
     </li>
 
-    <li><div><a href="#developer">
+    <li><div class="li-line"><a href="#developer">
       <img class="sym" src="../img/_but/but_download.png"/>
       <span>
       <lang lang="en">Download</lang>
@@ -3819,7 +3861,7 @@ with the recommendations, use the MAKE-script, and all shall be good.
       </a></div>
     </li>
   
-    <li><div><a href="#love">
+    <li><div class="li-line"><a href="#love">
       <img class="sym" src="../img/_but/but_heart.png"/>
       <span>
       <lang lang="en">Support Us</lang>
@@ -3829,7 +3871,7 @@ with the recommendations, use the MAKE-script, and all shall be good.
       </a></div>
     </li>
   
-    <li><div><a href="#contact">
+    <li><div class="li-line"><a href="#contact">
       <img class="sym" src="../img/_but/but_contact.png"/>
       <span>
       <lang lang="en">Contact</lang>
@@ -3839,7 +3881,7 @@ with the recommendations, use the MAKE-script, and all shall be good.
       </a></div>
     </li>
   
-    <li class='li-setting-ux'><div><a href="#setting-ux">
+    <li class='li-setting-ux'><div class="li-line"><a href="#setting-ux">
       <img class="sym" src="../img/_but/but_setting.png"/>
       <span>
       <lang lang="en">Settings</lang>
@@ -3849,7 +3891,7 @@ with the recommendations, use the MAKE-script, and all shall be good.
       </a></div>
     </li>
   
-    <li class="hide"><div><a href="#login">
+    <li class="hide"><div class="li-line"><a href="#login">
       <img class="sym" src="../img/_but/but_login.png"/>
       <span>
       <lang lang="en">Login</lang>

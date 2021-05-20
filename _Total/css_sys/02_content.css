@@ -10,7 +10,13 @@ main p:last
 margin-bottom: 0em;  
 }
 
-
+hr
+{
+display: block;
+margin: 1em 20vw 1em 20vw;
+border: none;
+border-bottom: 1px solid #cccccd;
+}
 
 main ul
 {
@@ -41,7 +47,7 @@ background-size: cover;
 
 
 
-main a:not([href^="#"]):before   /* all external links in content, TODO: Check if that has bad performance */
+main a:not([href^="#"]):not(.like-but):before   /* all external links in content, TODO: Check if that has bad performance */
 {
 position:relative;
 top:0.2em;
@@ -55,7 +61,7 @@ background-size: cover;
 }
 
 
-main a[href^="#"]:before   /* internal anchor links in content, TODO: Check if that has bad performance */
+main a[href^="#"]:not(.like-but):before   /* internal anchor links in content, TODO: Check if that has bad performance */
 {
 display:inline-block;
 position:relative;
@@ -69,12 +75,13 @@ background-size: cover;
 }
 
 
-main a[href^="mailto:"]:before   /* email-links, TODO: Check if that has bad performance */
+main a[href^="mailto:"]:not(.like-but):before   /* email-links, TODO: Check if that has bad performance */
 {
 background:url(../img/_svg/link_mail.svg);
 }
 
-.like-but > a:before
+main .like-but a:before,
+main .readmore a:before
 {
 display:none !important;
 }
@@ -85,15 +92,15 @@ display:none !important;
 #menu-sys a:before,
 #menu-dyn a:before
 {
-display:none;    
+display: none;    
 }
 
 
 main .readmore
 {
-cursor:pointer;
-font-weight:bold;
-margin-bottom:0.5em;
+cursor: pointer;
+font-weight: bold;
+margin: 0.3em 0 1em 0.4em;
 }
 
 .readmore.readless
@@ -242,7 +249,7 @@ margin:0.2em 0 0.2em 0;
 }
 
 
-section > header *
+section > header a
 {
 text-decoration:none;
 }
@@ -280,20 +287,21 @@ main .readmore,
 section.toggle > header > *:nth-child(1)
 {
 cursor: pointer;
-margin-left:1em;
 }
 
+
+/* TODO: Allow disable by body-class or so */
 
 main .readmore::before,
 *:not(section).toggle > *:nth-child(1)::before,
 section.toggle > header > *:nth-child(1)::before
 {
-display: block;
-position: absolute;
+display: inline-block;
+position: relative;
 width: 0.8em;
 height: 0.8em;
-top: 0.3em;
-left: -1em;
+top: 0.1em;
+left: 0.1em;
 content: "";
 background: url(../img/_svg/expand.svg);
 background-size: cover;
@@ -306,6 +314,12 @@ section.toggle-in > header > *:nth-child(1)::before
 {
 transform: rotate(180deg);
 }
+
+main .readmore::before
+{
+left: -0.3em;
+}
+
 
 
 /* ----------------------------------------------- QR ------------------------- */
@@ -323,26 +337,8 @@ height:auto;
 border-radius:0.5em;
 }
 
+/* ---------------------- quotes ------------------------- */
 
-
-.fly-in
-{
-transition: transform 0.3s ease, opacity 0.5s ease;  
-}
-
-.fly-in.out:not(.in0) 
-{
-transform: translateY(10em);
-opacity: 0;
-z-index: -1;
-}
-
-.fly-in.in0
-{
-transform: translateY(0vh);
-opacity: 1;
-z-index: 1;
-}
 
 .q-nice
 {

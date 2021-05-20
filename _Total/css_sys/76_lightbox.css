@@ -8,10 +8,10 @@ left:5%;
 width:90%;
 }
 
-#lightbox.slim
+body.desktop #lightbox.slim
 {
-left:20%;
-max-width:50%;
+left:25%;
+width:50%;
 }
 
 #lightbox-content
@@ -60,4 +60,11 @@ height:3em;
 position:relative;
 left:0.07em;
 top:-0.07em;
+}
+
+
+body.mobile.portrait #lightbox
+{
+left: 0vw;
+width: 105vw;
 }

@@ -3,11 +3,12 @@
 function NAV_LI_make(n, sym, f)
 {
     var dli = fCE("li"),
-        dd = dli.CE("div"),
+        dd = dli.CE("div").Ca("li-line"),
         da = dd.CE("a").Ca("done-a"),
-        ds = da.CE("span").APs(n),
         href = "#",
         y = typeof f;
+
+    da.CE("span").APs(n);
 
     if (y == "string")
     {

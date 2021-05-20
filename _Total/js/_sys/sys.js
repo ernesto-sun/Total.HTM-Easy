@@ -63,10 +63,11 @@ function I02F2()
     SET("com-tz", _tz);  
   }
 
-  if(!_OBS)   // that is in fact just not to colide with total.js, TODO: improve
+  if(!_OBS)   // not to colide with total.js, TODO: improve
   {
     _OBS = new IntersectionObserver(OBS_f, 
-      {rootMargin: "33% 0% -6% 0%"});    /* TODO: Understand options and set them well { tresholds:0, rootMargin: "33% 0 33% 0" } */
+      {rootMargin: "0px 0px 0px 0px",
+       threshold: 0.0001 });  
   }
 
   DYN(_b);
@@ -83,26 +84,29 @@ function I02F3()
 
   _tim = setInterval(SEC, 1000);
 
-  _win.addEventListener('scroll', () => { _scr0 = _scr = 1; }, {passive: true});  
-  _win.addEventListener('resize', () => { _res = 1; }, {passive: true}); 
-  _win.addEventListener('keydown', KEY, {passive: true});
+  _win.addEventListener("scroll", () => { _scr0 = _scr = 1; }, { passive: true });  
+  _win.addEventListener("resize", () => { _res = 1; }, { passive: true }); 
+  _win.addEventListener("keydown", KEY, { passive: true });
 
   IDLE(X_I02);
 
-  var hsh = "" + _d.location.hash.substr(1),
-      ihi = hsh.length,  // ihi: is hash init
+  _href = "" + _d.location.hash.substr(1);
+  var ihi = _href.length,  // ihi: is hash init
       sc = 0;  // do js-scrolling
   if(ihi)
   {
-    ds = fE(hsh);
+    ds = fE(_href);
     if(ds)
     {
-      sc = (!_scr0 && _win.scrollY < 100);   // Never scrolled so far and/or being at the top (still) 
+      sc = (!_scr0 && _win.scrollY < 10);   // Never scrolled so far and/or being at the top (still) 
       // This strategy works together with: history.scrollRestoration = "manual";  
-      GOTO(hsh, 1, !sc);
+      setTimeout(() => 
+      {
+        GOTO(_href, 1, !sc);
+      }, 800);  // TODO: ?!
     }
 
-    if(hsh == "login-failed") 
+    if(_href == "login-failed") 
     {
        err(LLS("login-err"), 3); 
        history.pushState(null, null, '#');
@@ -112,12 +116,11 @@ function I02F3()
   _win.addEventListener("hashchange", (e) =>
   {
     e.preventDefault();
-	   var ids = _d.location.hash.substr(1),
-         ds;
-     if(ids.length)
+    _hrefp = _href; 
+    _href = "" + _d.location.hash.substr(1);
+     if(_href.length)
      {
-      ds = fE(ids);
-      if(ds) GOTO(ids, 1); 
+      if(fE(_href)) GOTO(_href, 1); 
      }
   });
 
@@ -137,14 +140,26 @@ function I02F3()
 // --------------------------------------------------            
 async function LAZY_section(ids)
 {
+  var ds = fE(ids), cc = 0; 
+  if(ds.Ch("loaded")) return ds;
+  if(ds.Ch("loading"))
+  {
+    while(!ds.Ch("loaded") && cc < 50)  // we wait 5 seconds! 
+    {      
+      console.warn("Waiting 100ms for section to get loaded.");
+      await SEEP(100);
+      cc++;
+    }
+    return ds;
+  }
+
   var res = await fetch("section_" + ids + ".htm");
   if(typeof res.ok == UN || !res.ok)
   {
     throw new Error("Invalid result object in lazy section loading: " + ids);
   }
 
-  var ds = fE(ids); 
-  ds.Ca("loaded").Cr("unloaded");
+  ds.Ca("loading").Cr("unloaded");
   var dsb = ds.Q(":scope > .section-body");
   if(!dsb)
   {
@@ -159,47 +174,59 @@ async function LAZY_section(ids)
   }
 
   DYN(dsb.APs(ht)); 
+
+  await SLEEP(100);
+  ds.Cr("loading").Ca("loaded");
+
   return ds;
 }
 
 // --------------------------------------------------            
-function OBS_in(e, first) 
-{ 
-  if(first) 
+function OBS_in(d, first, e) 
+{
+  var id = d.id;
+  switch(d.TAG())
   {
-    // first time in
-    // console.log("First Time IN: ", e);
-
-    if(e.TAG() == "section")
+  case "footer":
+  case "section":
+  {
+    if(first && d.Ch("unloaded") && !d.Ch("unloaded-rm") && !d.Ch("toggle-out")) 
     {
-      if(e.Ch("unloaded"))
-      {
-        if(!e.Ch("unloaded-rm") && !e.Ch("toggle-out"))
-        {
-          LAZY_section(e.id);
-        }
-      }
+      LAZY_section(id);
     }
+    else
+    {
+      // section in, in case of LAZY_section above current section is set otherwise
+      if(!_ssk) _ss = id;
+    }
+    break;
   }
-  // console.log("IN: ", e);
-
-  if(e.id == "header")
+  default:
   {
-    _b.Ca("header-in").Cr("header-out");
+    if(id == "header")
+    {
+      if(!_ssk) _ss = "";
+      _b.Ca("header-in").Cr("header-out");
+    }
+    break;
   }
+  }
+
+  X_inout(d, 1, first);
 }
 
 // --------------------------------------------------            
-function OBS_out(e) 
+function OBS_out(d) 
 { 
-  //console.log("OUT: ", e);
-  if(e.id == "header")
+  if(d.id == "header")
   {
     _b.Cr("header-in").Ca("header-out");
   }
+
+  X_inout(d, 0, 0);
 }
 
-      
+
 // --------------------------------------------------            
 function OBS_f(ae, obs) 
 { 
@@ -211,33 +238,95 @@ function OBS_f(ae, obs)
     {
       if(!cl.contains("in"))
       {
+        // element just moved into visibility
+
         cl.add("in");
         cl.remove("out");
 
-        if(_prlx) // parallax enabled
+        if(cl.contains("parallax"))
         {
-          if(cl.contains("parallax")) d._pxt = d.TOP(); // reset not to call getBoundingRect at _FRAME
+          if(typeof d._dy == UN) d._dy = 0;
+          
+          //if(typeof d._mtop == UN) d._mtop = fIS(getComputedStyle(d).marginTop);
+
+          d._pxx = 0;
+          if(cl.contains("parallax-x")) d._pxx = 1;  // this flag calls the X-parallax-function
+
+          d._h = d.H(); // TODO: here we maybe have to wait for image.loaded to get effective height
+
+          if(typeof d._h == UN)
+          {
+            console.warn("Seems height not defined yet. Fallback to 200.");
+            d._h = 200;
+            // TODO: Delay the height-read ?!
+          }
+
+          d._top = d.TOP(); 
+
+          // you can overwrite the parallax-factor, for all or just mobile devices, using data-f and data-fmob
+
+          d._pf = _PARALLAX_f;
+          if(d.Ah("data-fmob") && _b.Ch("mobile"))
+          {
+            d._pf = d.A("data-fmob");
+          }
+          else if(d.Ah("data-f"))
+          {
+            d._pf = d.A("data-f");
+          }
+
+          if(d._pf == "by-outer")
+          {
+            var dp = d.parentNode,
+                hp = dp.H(); 
+
+            d._pf = (hp / d._h) * (hp / _hs);  // ratio(outer, inner) * ratio(outer, screen) 
+            d._top = dp.TOP(); 
+            d._h = 0; 
+          }
+          else d._pf = fF(d._pf);
+
+          d._sy0 = d._top - _hs - d._h;  // offset, to be subracted from sy. Is 0 if element is at top-page  
+          if(d._sy0 < 0) d._sy0 = 0;
+          d._in = 1;
         }
 
         if(!cl.contains("in0")) 
         {
+          // the first time
+
           cl.add("in0");
-          OBS_in(d, 1);
+          OBS_in(d, 1, e);
         }
-        else OBS_in(d, 0);
+        else OBS_in(d, 0, e);
       }
     }
     else 
     {
       if(!cl.contains("out"))
       {
+        // element just moved out of visibility 
+
         cl.add("out");
         cl.remove("in");
 
-
         if(_prlx) // parallax enabled
         {
-          if(cl.contains("parallax")) d.CSS("transform","translateY(0px)"); // reset it
+          if(cl.contains("parallax")) 
+          {
+            var sk = 0;
+            d._dy = 0;
+            d._in = 0;
+            if(d._pxx)
+            {
+              sk = X_parallax(d);
+            }
+
+            if(!sk)
+            {
+             d.CSS("transform", "translateY(0px)"); // reset it
+            }
+          }
         }
 
         OBS_out(d);
@@ -251,14 +340,43 @@ function OBS_f(ae, obs)
 // -----------------------------------------------------
 function _FRAME()
 {
-  if(_prlx)
+  if(_prlx)  // parallax
   {
-    // parallax, must be here to set fast
-    for (var d of _prla)
+    var d, 
+        sy = _win.scrollY, 
+        a,
+        dy, sk, ddy, ddya;
+
+    for (d of _prla)
     {
-      if(d.Ch("in"))
+      if(d._in)
       {
-          d.style.transform = "translateY(" + ((_win.scrollY - d._pxt) * _PARALLAX_f).toFixed(1) + "px)";          
+        a = sy - d._sy0;   // the effective scroll to use, same as sy in case of top-viewport (d._sy0 == 0)    
+
+        if(a > 0)
+        {
+          dy = Math.round(a * d._pf);
+
+          ddy = dy - d._dy;
+          ddya = Math.abs(ddy);
+
+          if(ddya > 0)
+          {          
+            d._dy += ddy;   
+
+            sk = 0;   // skip 
+
+            if(d._pxx)
+            {
+              sk = X_parallax(d);
+            }  
+
+            if(!sk)
+            {
+              d.style.transform = "translateY(" + d._dy + "px)"; 
+            }
+          }   
+        }
       }
     }
   }
@@ -375,12 +493,22 @@ function _SEC(e)
       _scrt = _win.scrollY;
     }
   }
+
   if(_scr_on)
   {
     if(_scrt == _scrtl)
     {
       _scr_on = 0;
       X_SCR_after();
+    }
+  }
+
+  // check for current section
+  if(!_ssk)
+  {
+    if(_ss != _href)
+    {
+      _SSC();
     }
   }
 
@@ -394,9 +522,59 @@ function _SEC(e)
        _INP_change(0, _INP_inp_d);  
     }
   } 
- 
 }
 
+// -----------------------------------------------------
+function _SSC() // set section current
+{
+  // This function is the possible switch of the current section. if ss is empty we are at top.
+  var hn = "";  // href new 
+
+  if(_ss != "" && _win.scrollY > (_hs * 2))  // if scroll isn't two pages down it's top 
+  {
+    switch(_ss)
+    {
+    case "top":
+    case "home":
+    case "header":
+    case "main":
+    case "intro":
+      break;
+    default:
+      hn = _ss;
+      break;
+    }
+  }
+
+  if(hn != _href) 
+  {
+    if(hn != "")
+    {
+      var sk=0, d, sy = _win.scrollY;
+
+      // check if new section is really visible
+      d = fE(hn);
+      if(sy + _hs < d.TOP()) sk=1;
+      else if(sy > d.TOP() + d.H()) sk = 1;
+
+      if(!sk && _href != "")
+      {
+        // Now check if current section is still visible, and keep it in case
+        d = fE(_href);
+        if(sy + _hs > d.TOP() && sy < d.TOP() + d.H()) sk=1;
+      }
+
+      if(sk) return;
+    }
+
+    _hrefp =  _href;
+    _href = hn; 
+    history.pushState(null, null, "#" + hn);
+
+    _b.Cr("section-" + _hrefp);
+    _b.Ca("section-" + _href);
+  }
+}
 
 // ----------------------------------------------------
 function msg(text, sec, is_err, is_warn)
@@ -676,15 +854,18 @@ function GOTO(ids, fin, skipScroll, f_done)   // works with sections AND any anc
 
       if(dd.TAG() == "section") 
       {
-        pushStateIf(ids);       // TODO: Strategy?!
+        _ss = ids;
+        _SSC();  // set section current
       }
 
       if(typeof skipScroll == UN || !skipScroll)
       {
-        // setTimeout(() => 
-        // { 
-          _win.scrollTo({top: dd.TOP() - fI(_hs / 4), behavior: "smooth"}) 
-        // }, 50);
+          SCROLL(dd, () =>
+          {
+            X_GOTO_after(ids);
+            if(f_done) f_done();          
+          });
+          return; // !
       }
       else
       {
@@ -695,28 +876,8 @@ function GOTO(ids, fin, skipScroll, f_done)   // works with sections AND any anc
   }
 
   X_GOTO_after(ids);
-
   if(f_done) f_done();
 }
-
-// _href = "",           // current href url 
-// _hrefp = "",          // previous href url
-
-// ----------------------------------
-function pushStateIf(ids)
-{
-  if(ids != "home" && ids != _href) 
-  {
-    var href = '#' + ids;
-    if(href != _hrefp)
-    {
-      history.pushState(null, null, href);
-      _hrefp =  href;
-    }
-  }
-  else if(_d.location.hash.length > 1) history.pushState(null, null, '');
-}
-
 
 // ----------------------------------------------------
 function popup(html, sec, is_slim, is_noclose, f_close)
@@ -947,4 +1108,13 @@ function dropdown_click(e)
 
   e.preventDefault();
 }   
+
+// -----------------------------------------------------------
+function flip_click(e)
+{
+  var d = this;
+  e.preventDefault(); 
+  d.Ct("is-flip");
+  if(!d.Ch("is-flip") && d.Ch("flip-v-toggle")) d.Ct("flip-v");
+}
 

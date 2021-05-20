@@ -27,6 +27,8 @@ function FORM_make(idf, S, O)  // S is the form-definition, O are the options fo
         df = fCE("form"), // .A({action: "#", method: "post"}),
         dp = df;
 
+    if(typeof O == UN) O = {};
+
     for(s of S)
     {
         switch(s[1])
@@ -52,10 +54,10 @@ function FORM_make(idf, S, O)  // S is the form-definition, O are the options fo
 
                     // and add captcha
                     dp.APs(["<div class='div-captcha'><div>",
-                    "<img class='captcha-image' src='", url, "/_3p/securimage/securimage_show.php' alt='Captcha Image' ",
+                    "<img class='captcha-image' src='", url, "/_3p/securimage/securimage_show.php?namespace=", idf ,"' alt='Captcha Image' ",
                     "onload='_FORM_cap_chk.call(this, event)' onerror='_FORM_cap_err.call(this, event)'/>",
                     "<img src='../img/_but/but_reload.png' class='sym captcha-reload cursor-pointer' onclick='_FORM_cap.call(this, event)' alt='Different image' /></div>",
-                    "<input type='text' name='captcha-code' size='6' minlength='6' maxlength='6' required='required' placeholder='Code' ",
+                    "<input type='number' name='captcha-code' size='1' minlength='1' maxlength='1' min='2' max='9' step='1' required='required' placeholder='?' ",
                     "autocomplete='off' autocapitalize='off' autocorrect='off' autospellcheck='off' value=''/></div>"].join(""));
                 }
             }    
@@ -255,6 +257,11 @@ function INP_val(d, v)
         st = 1; 
         break;
     }
+    case "email":
+    {
+        st = 1; 
+        break;
+    }
     case "txt":
     {
         st = 1; 
@@ -427,21 +434,29 @@ function INP_make(s, opt)   // for all inputs that are not chapter
         if(!ise) dio.Ca("num-regular");
         break;
     }
+    case "email":
     case "txt-area":
-        ise=1;
-        dio.Ca("txt");
     case "txt":
     {
-        y = "text";
         if(typeof(s[4]) != UN) o.maxlength = s[4];
 
-        if(ise)
+        if(s[1] == "txt-area")
         {
+            ise = 1;
             di = fCE("textarea").A(o);
         }
         else
         {
             dio.Ca("txt-single");
+            if(s[1] == "txt")
+            {
+                y = "text";
+            }
+            else            
+            {
+                dio.Ca("email");
+                y = "email";
+            }
         }
         break;
     }
@@ -704,8 +719,9 @@ function FORM_clean(idf)
 function _FORM_cap(e)  // Reload near captcha 
 { 
     var df = this.closest("form"),
-        url = df.A("data-url"); 
-    df.Q(".captcha-image").src = url + "/_3p/securimage/securimage_show.php?" + Math.random();
+        url = df.A("data-url"),
+        ns =  df.parentNode.id;
+    df.Q(".captcha-image").src = url + "/_3p/securimage/securimage_show.php?namespace=" + ns + "&id=" + Math.random();
     if(e)e.preventDefault();
 }
 
@@ -780,9 +796,9 @@ function FORM_send(idf, url)
             dcap = dform['captcha-code'],
             cap = dcap.value;
 
-        if(!dcap.checkValidity() || cap.length != 6) return err(LLS("err-captcha"));
+        if(!dcap.checkValidity() || cap.length != 1) return err(LLS("err-captcha"));
 
-        ConfiMailPHP(url, cap, JSON.stringify(fd)).then((ok) => 
+        ConfiMailPHP(url, cap, JSON.stringify(fd), idf).then((ok) => 
         {
             if(ok == 1)
             {
@@ -809,7 +825,7 @@ function FORM_send(idf, url)
 
 
 // ---------------------------------------------------------------------------
-function ConfiMailPHP(url, cap, msg) 
+function ConfiMailPHP(url, cap, msg, ns) 
 { 
     return new Promise(function(ok, no)
     {
@@ -836,7 +852,7 @@ function ConfiMailPHP(url, cap, msg)
                 else no("_MX3");
             }
         }
-        ds.A("src", url + "/mail_script.php?r=" + r + "&c=" + cap);
+        ds.A("src", url + "/mail_script.php?r=" + r + "&c=" + cap + "&namespace=" + ns);
     });
 }
 

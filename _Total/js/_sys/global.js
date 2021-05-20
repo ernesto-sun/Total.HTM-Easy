@@ -1,5 +1,5 @@
 
-// In fact most of the JavaScript of Total.HTM Easy plays in the global space
+// In fact most of the JavaScript of Total.HTM Easy plays in the global scope
 //
 // I like short simple fast global variables. 
 //
@@ -15,8 +15,7 @@ MIN_EM =            30,
 MAX_EM =            60,
 
 _PARALLAX_on =      1,
-_PARALLAX_f =       0.4;
-
+_PARALLAX_f =       0.32;
 
 // -------------------------------------------------------------
 // Internal globals, used for all kind of operations 
@@ -42,7 +41,7 @@ _1emd,                // the hidden sys dom element of 1em width and 1em height
 _100v,                // the hidden #div-100v to meassure CSS-screen-width, height
 _res = 0,             // 'dirty_resize'    
 _rese = 0,            // ensure resize
-_href = "",           // current href url 
+_href = "",           // current href url, the 'official' async CURRENT SECTION e.g. "#about" 
 _hrefp = "",          // previous href url
 _scr = 0,             // 'dirty_scroll'
 _scr0 = 0,            // 1 if dirty_scroll was ever set
@@ -50,6 +49,8 @@ _scrt = 0,            // current scroll-top
 _scrtl = 0,           // last scroll_top (previous _scrt)
 _scr_on = 0,          // 1 if scrolling is ongoing
 _scr_up = 0,          // 1 if ongoing (or previous) scrolling was upwards
+_ssk = 0,             // 1/0 flag for skip things during JS-scrolling
+_ss = "",             // async candidate for current section
 _prlx = 0,            // will be 1 if _PARALLAX_on && _b.QA(".parallax").length
 _prla,                // array of .parallax dom
 _zoom = 1,            // Zoom factor for whole page
@@ -59,7 +60,7 @@ _OBS,                 // The ref to the nice IntersectionObserver
 _th = "light",        // name of current theme, Fallback: 'light'. See setting.js
 _TH,                  // reference to the current theme info (see setting.js)
 _LS = window.localStorage,  // Ref to Localstorage for UX-settings
-_xr_ut = "../",        // Path to /_Totfal/
+_xr_ut = "../",        // Path to /_Total/
 _auto_login = 1,       // Enable/disable auto-login-function here 
 _uok0 = 0,
 _uok  = 0,
@@ -76,6 +77,7 @@ _skeyb = 0;           // 1 if soft-keyboard is popped up to avoid resize-event
 
 let
 fI =    parseInt,
+fIS =   (n) => { var r = parseInt(n); return isNaN(r) ? 0 : r; },   // fIs never returns NaN or null or UN; S = 'Safe'
 fF =    parseFloat,
 fR =    Math.round,
 fCE = _d.createElement.bind(_d),
@@ -173,4 +175,5 @@ ep.EE = function(n) { this.dispatchEvent(new Event(n)); return this; }   // trig
 // I agree to better avoid it, otherwise the advantages outweigh in my present view ...
 // 
 // TODO: Discuss and clarify ...
+//
 

@@ -13,11 +13,6 @@ html[lang="hu"] lang[lang="hu"]
 display:inline;
 }
 
-#topline-lang
-{
-margin-top:13%;
-}
-
 .lang-choice
 {
 display:flex;
@@ -39,9 +34,9 @@ flex-direction:row;
 
 .lang-list > img
 {
-height:1.5em;
-width:2em;
-margin-right:0.2em;
+height: 1.4em;
+width: 1.9em;
+margin-right: 0.2em;
 order: 2;
 }
 
@@ -72,8 +67,8 @@ order: 1;
 
 .lang-choice .svg-triangle
 {
-margin:0.1em 0 0 0.2em;
-height:1.2em;
+margin: 0 0 0 0.2em;
+height: 1.2em;
 }
 
 .lang-choice.active .svg-triangle

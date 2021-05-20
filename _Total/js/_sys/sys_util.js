@@ -269,13 +269,13 @@ function POST(url, data, dj)  // dj: data as json, by default false
       } 
       else 
       {  
-        no("ERROR: POST failed: " + url)
+        no("ERROR: POST failed: " + url);
       }
     };
           
     req.onerror = function() 
     {
-      no("AJAX Network failed: " + url)
+      no("AJAX Network failed: " + url);
     }
     
     if(typeof data != UN)
@@ -448,3 +448,25 @@ function print(html)
   }
 }
 
+
+// ------------------------------------------------------
+function SCROLL(d, f)
+{
+  _ssk = 1;
+  try 
+  {
+    // TODO: Make our own scroll to have safe timing
+    _win.scrollTo({top: d.TOP() - (_hs >> 3),    // This is a round(x/8) 
+                  behavior: "smooth"}); 
+
+    setTimeout(() =>
+    {
+      f();
+    }, 400);   // TODO: I found no way to know when 'smooth scrolling' ended. Need to implement own scroll-anim
+  } 
+  catch (ex) 
+  {
+     console.log("Scrolling failed!", ex);
+  }
+  _ssk = 0;
+}

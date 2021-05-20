@@ -1,0 +1,47 @@
+:root
+{
+--delay-teaser: 3s;     /* This is the default time after elements gets class in, e.g flip-teaser */ 
+}
+
+/* Bad news: FLIP-effect  requires the parent to have perspective */
+/* Good news: the class flip-outer is set by total.js or MAKE for you */
+
+.flip-outer
+{
+perspective: 100em;
+}
+
+.flip
+{
+transition: transform 0.3s linear;
+transform-style: preserve-3d;
+cursor: pointer;    
+}
+
+
+.is-flip
+{
+transform: rotateY(180deg);
+}
+
+.flip-v.is-flip
+{
+transform: rotateX(180deg);
+}
+
+
+section.in .flip-teaser:not(.is-flip)  /* Requires also class .flip, because of Observer, MAKE-prep, etc. */
+{
+animation: anim-flip-teaser 0.9s 1; 
+animation-delay: var(--delay-teaser); 
+}
+
+@keyframes anim-flip-teaser 
+{
+0% { transform: rotateY(0deg) }
+40% { transform: rotateY(5deg) }
+100% { transform: rotateY(0deg) }
+}
+
+
+

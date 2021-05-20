@@ -12,6 +12,9 @@ _b.Ca("login-total");   // means logged in
 var dm = fE("menu-dyn"),
     hasAPP = 0;
     
+if(!dm) dm = fE("menu-main");
+if(!dm) dm = fE("menu-footer");
+
 dm.AP(NAV_LI_make(_LLAD.make, "fa-gear", MAKE).A("id", "but-admin-make"));
 
 if(hasAPP)  // TODO

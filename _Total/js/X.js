@@ -21,6 +21,83 @@ function X_DYN(d)   // Ater each DYN-call. That is dynamisation of DOM
 function X_MH(b)  // 1/0 if Hamburger Menu opened/closed
 {
 
+}
+
+// ------------------------------------
+function X_inout(d, b, b0)  
+{
+  // b: 1/0 if in or out  
+  // b0: 1 if first time in, otherwise 0 or UN
+
+  // Note: Only one section can be current section, but several sections can be visible at once.
+  // The most recent section that is 'in', is the current section. Can also be top, footer
+
+  // Usually the id of the current section is put into the hash
+  // This function X_inout() is called also with other elements, such as .parallax, .observe, etc.
+
+  // Note: The system garantees that any visible section gets this call at least once.
+  // This is the place to make JS-initialization.
+  // In case of lazy sections this function is called AFTER the lazy content was added 
+
+  if(b && b0)
+  {
+    // first time in
+
+
+    switch(d.id)
+    {
+    case "setting-ux":
+      XX_make_form_ux();
+      break;
+    case "contact": 
+      XX_make_form_contact();
+      // no break here, keep going for email-making
+    case "impressum":
+      XX_make_email();
+      break;;
+    case "setting-ux":
+      if(!fE("setting-ux")) 
+      { 
+        LAZY("_lazy/form").then(() => 
+        {
+          SET_make();
+          GOTO("setting-ux", 1);
+        });
+      }
+      break;
+    case "footer":
+      XX_make_form_newsletter();
+    break;
+    }
+  }
+}
+
+// ------------------------------------
+function X_parallax(d)
+{
+  // Note: Be fast here, it's a FRAME-call that should not take no 20ms (at slow devices)
+
+  // d._dy is the parallax-offset
+  // over _win.scrollY you get current scroll-pos
+  // d._top is the original page-top (to be calculated against scrollY)
+  // d._pf is the parallax-factor (between 0.1 and 0.6 or so)
+
+
+ // console.log("parallax", d);
+
+
+  switch(d.id)
+  {
+  default:
+  }
+
+  return 0;  // if you return 1, the regular translateY(d._dy) is skipped 
+}
+
+
+// ------------------------------------
+function X_toggle_after(dp, b)
+{
   if(b)
   {
     // Check our extra slider-buttons in menu
@@ -98,25 +175,6 @@ function X_click(id)   // all href-catcher, and button-id's
          "<lang lang='es'>Este es el mensaje de error de la prueba.</lang>"].join(""));
     break;
 
-  case "#contact": 
-    XX_make_form_contact();
-    // no break here, keep going for email-making
-  case "#impressum":
-    {
-      // just a funny way to write an email address, not to make it all too easy for home-made spiders, ...
-      var e;
-      for(e of fQA(".apl-476:not(.done)")) e.A("href",  atob("bWFpbHRvOg==") + e.A("href").substr(1) +  atob("QGV4YQ==") + "l" + atob("b3QuY29t")).Ca("done");
-      for(e of fQA(".epl-476:not(.done)")) e.EMP().APs("exalot.").Ca("done");  
-    }    
-    return 1;
-  case "#setting-ux":
-    if(fE("setting-ux")) return 1; 
-    LAZY("_lazy/form").then(() => 
-    {
-      SET_make();
-      GOTO("setting-ux", 1);
-    });
-    return 0;
   default:
     return 1;
   }
@@ -213,6 +271,16 @@ function XX_SM(b)   // slider-main control over Hamburger Menu
 
 
 // ---------------------------------------------------------------------------
+function XX_make_email()
+{
+  // just a funny way to write an email address, not to make it all too easy for home-made spiders, ...
+  var e;
+  for(e of fQA(".apl-476:not(.done)")) e.A("href",  atob("bWFpbHRvOg==") + e.A("href").substr(1) +  atob("QGV4YQ==") + "l" + atob("b3QuY29t")).Ca("done");
+  for(e of fQA(".epl-476:not(.done)")) e.EMP().APs("exalot.").Ca("done");  
+}
+
+
+// ---------------------------------------------------------------------------
 function XX_make_form_contact()
 {
   LAZY("_lazy/form").then(() =>
@@ -237,3 +305,45 @@ function XX_make_form_contact()
     ]}));
   });
 }
+
+
+// ------------------------------------
+function XX_make_form_ux()
+{
+  LAZY("_lazy/form").then(() => 
+  {
+    SET_make(); 
+  });  
+}
+
+
+// ------------------------------------
+function XX_make_form_newsletter()
+{
+  LAZY("_lazy/form").then(() =>
+  {
+    var dcf = fE("form-newsletter"),
+        df;
+
+    if(!dcf.Ch("done"))
+    {
+      if(typeof FORM_make == UN)
+      {
+        console.error("LAZY section loading seems to have failed! FORM_make not defined!");
+      }
+
+      df = FORM_make("form-newsletter",
+      [
+      ["txt-email",       "email",        "E-Mail",              "",  63],
+      ["but-send",        "but",          "Anmelden",            "green", "https://exa.run/ConfiMailPHP"]
+      ]);
+
+      dcf.Ca("done").AP(df);
+      var di = fE("form-newsletter-txt-email") 
+          cap = INP_tit(di),
+          dii = di.Q("input");  
+      dii.A("placeholder", cap);
+    }
+  });
+}
+

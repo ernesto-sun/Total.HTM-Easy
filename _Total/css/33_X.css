@@ -486,4 +486,30 @@ display:none;
 }
 
 
+#newsletter
+{
+width: -moz-fit-content;
+width: fit-content;
+margin: 2em auto;
+}
 
+
+.tit-top
+{
+font-size:0.8em;    
+}
+
+#form-newsletter
+{
+margin: 1em auto;
+}
+
+#form-newsletter-txt-email > label
+{
+display: none;
+}
+
+#form-newsletter-txt-email > input
+{
+width:20em;
+}

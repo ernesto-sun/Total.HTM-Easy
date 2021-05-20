@@ -55,7 +55,7 @@ margin:0 0 1.4em 0;
 .box-grid-third > .box-grid-body > .box
 {
 width:30%;
-margin:0 0 1em 3.3%;
+margin:0 0 1em 5%;
 }
 
 .box-grid-third:not(.box-grid-slider)  > .box-grid-body >  .box:nth-child(3n+1)
@@ -66,7 +66,7 @@ margin:0 0 1em 0;
 .box-grid-half > .box-grid-body > .box
 {
 width:49%;
-margin:0 0 1em 1%;
+margin:0 0 1em 2%;
 }
 
 .box-grid-half:not(.box-grid-slider)  > .box-grid-body >  .box:nth-child(2n+1)
@@ -113,3 +113,16 @@ width: -moz-fit-content;
 width: fit-content;
 }
 
+
+body.mobile .box-grid-quarter > .box-grid-body > .box
+{
+width:49%;
+margin:0 0 1em 1% !important;
+}
+
+body.mobile .box-grid-half > .box-grid-body > .box,
+body.mobile .box-grid-third > .box-grid-body > .box
+{
+width: 100%;
+margin:0 0 1em 0 !important;
+}

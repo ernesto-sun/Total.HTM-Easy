@@ -2,6 +2,7 @@
 select, 
 textarea,
 .txt > input, 
+.email > input,
 .chk > input,
 .col > input,
 .com > input,
@@ -9,7 +10,8 @@ textarea,
 .date > input,
 .datetime input,
 .num-regular > input, 
-.com-radio > fieldset
+.com-radio > fieldset,
+.div-captcha > input
 {
 border: var(--inp-border);
 border-radius: var(--inp-border-radius);
@@ -20,11 +22,13 @@ select,
 textarea,
 .col > input,
 .txt > input,
+.email > input,
 .com > input,
 .time > input,
 .date > input,
 .datetime input,
-.num-regular > input
+.num-regular > input,
+.div-captcha > input
 {
 color: var(--inp-col-fg);
 padding: var(--inp-padding);     
@@ -113,12 +117,12 @@ height:4em;
 
 main form select
 {
-min-width:8em;    
+min-width: 8em;    
 }
 
 .num-regular > input
 {
-max-width:6em; 
+max-width: 6em; 
 }
 
 .txt > input,
@@ -193,12 +197,6 @@ form .div-captcha > input
 width: 8em;
 font-size: 1.4em;
 }
-
-form .div-captcha > input
-{
-margin-top: 0.25em;
-}
-
 
 form .div-captcha img.captcha-reload
 {

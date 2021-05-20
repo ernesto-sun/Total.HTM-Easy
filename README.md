@@ -290,7 +290,7 @@ and best reference.
 
 ## Included Code of Others, Acknowledgments 
 
-All code used by others is licensed under MIT, BSD, JSON and alike.
+All code of others is licensed under MIT, BSD, JSON and alike.
 I am welcoming a discussion how far dependencies can and shall be 
 reduced. 
 
@@ -299,7 +299,6 @@ reduced.
 * [phpQuery](https://code.google.com/archive/p/phpquery/)
 
 Note: These external dependencies come _only_ with the MAKE-script. The website itself, and the release output have **no dependency at all**.
-
 
 ## TODO and Ideas
 
@@ -316,7 +315,7 @@ A list of some 'high-level'-TODO's:
 
 ## Testing and Bug-Reports
 
-Tested Browsers: Chrome, Firefox, Edge, Safari  (All features with JavaScript)
+Tested Browsers: Chrome, Firefox, Edge, Safari  (Full support)
 
 Note: The auto-generated No-JavaScript-website 's.htm' works on anything that carries 'web' in its name.
 

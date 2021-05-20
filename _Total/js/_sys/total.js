@@ -91,19 +91,19 @@ function I01_T()   // The Special Total INIT (after LAZY-load) and before I02()
     
 
     //  --- menu dropdown per JS
-    for (d of _b.QA("ul.dropdown li, li.dropdown"))
+    for (d of _b.QA("ul.dropdown > li, li.dropdown"))
     {
       if(d.Ch("dropdown-css") || d.Ch("dropdown-js")) continue;
-      d.Ca("dropdown-js");
-      var da = d.Q("a");
-      if(da)
+      var da = d.Q(":scope > .li-line > a"),
+          dsub = d.Q(":scope > .li-sub");
+      
+      if(dsub)
       {
-        var dli = da.closest("li"),
-            dsub = dli.Q(":scope > .li-sub");
-        if(dsub)
-        {
-          dsub.CSS({display: "block"}).Ca("hide");
+        d.Ca("dropdown-js");
+        dsub.CSS({display: "block"}).Ca("hide");
   
+        if(da)
+        {
           da.Ea("dblclick", aclick);
           da.Er("click", aclick);
           da.Ea("click", dropdown_click);
@@ -196,7 +196,10 @@ function I01_T()   // The Special Total INIT (after LAZY-load) and before I02()
               if(drm)
               {
                 // only if no other links and readmore exists a.s.o.
-                dh.Ca("inline").Ca("cursor-pointer").Ea("click", titclick);
+            
+                //dh.Ca("inline").
+                
+                dh.Ca("cursor-pointer").Ea("click", titclick);
               }
             }
           }
@@ -223,13 +226,22 @@ function I01_T()   // The Special Total INIT (after LAZY-load) and before I02()
   });
 
 
+  // flip-effect
+  for (d of _b.QA(".flip:not(.done-flip)"))
+  {
+    d.Ca("done-flip");
+    d.parentNode.Ca("flip-outer");
+    d.Ea("click", flip_click);    
+  }
+
   // ------------------------------------------------
 
   if(!_OBS)
   {
     // this is a hack because at release we want to create OBS later, just before first DYN-call
     _OBS = new IntersectionObserver(OBS_f, 
-      {rootMargin: "33% 0% -6% 0%"});    /* TODO: Understand options and set them well { tresholds:0, rootMargin: "33% 0 33% 0" } */
+      {rootMargin: "0px 0px 0px 0px",
+      threshold: 0.0001});    /* TODO: Understand options and set them well { tresholds:0, rootMargin: "33% 0 33% 0" } */
   }
 
   // Observe default alements here, over MAKE done at release by DYN()
@@ -239,10 +251,16 @@ function I01_T()   // The Special Total INIT (after LAZY-load) and before I02()
   } 
 
 
+  try 
+  {
+    CLICK("#login");
+  } 
+  catch (ex) 
+  {
+    console.warn("Login failed, maybe Total was opened on file-basis. Ex: ", ex);    
+  }
 
-
-  CLICK("#login");
-
+  
 
   // Note: AJAX does not work with browsers on local 'file://'. CORS-restriction. A bit sad. 
   // for(d of fQA("section.file")) LOAD("./section_" + d.id.replace(/\W/,"_") + ".htm").then((ht) => { d.APs(ht); });

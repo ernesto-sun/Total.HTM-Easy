@@ -7,35 +7,79 @@ function LANG(l)  // Overwritten at 'total.js'
 }
 
 // ----------------------------------------------------
-function _LAZY(src, f)
+function _LAZY(src, f, d)
 {
-  var d = _b.CE("script").A({type: "text/javascript"});
-
+  if(typeof d == UN || !d)
+  {
+    d = _b.CE("script").A({type: "text/javascript"});
+  }
+  
   // d.async: true;
+  if(typeof f != UN) d.Ea("load", f);
 
-  d.Ea("load", f);
   d.A({src: src});  
   return d;
 }
 
 // ----------------------------------------------------
-function LAZY(src)
+function _LAZYa(src, d)   // the async version, here with Promise
 {
-  return new Promise(function(ok, no)
+  return new Promise((ok, no) => 
   {
-    try
+    _LAZY(src, () => 
     {
-      var id = "script-" + src.replace(/\W/,"-"),
-          es = fE(id);
-      if(es) ok();  
-      else _LAZY("../js/" + src + ".js", () => { setTimeout(() => { IDLE(ok); }, 100); }).id = id;
-    }
-    catch(ex)
+      setTimeout(() => 
+      { 
+        IDLE(ok); 
+      }, 100);   
+    }, d);
+  });
+}
+
+// ----------------------------------------------------
+function _SLEEP(ms) 
+{
+  return new Promise((ok, no) => 
+  {
+    setTimeout(() => ok(), ms);
+  });
+}
+
+// ----------------------------------------------------
+async function SLEEP(ms) 
+{
+  await _SLEEP(ms);
+}
+
+// ----------------------------------------------------
+async function LAZY(src)
+{
+  var id = "script-" + src.replace(/\W/,"-"),
+      d = fE(id),
+      sk = 0, 
+      cc = 0;
+  if(d)
+  {      
+    if(d.Ch("loaded")) 
     {
-      console.error("Loading script: " +  src + " failed!", ex);
-      no();
+      sk = 1;
     }
-	});
+
+    while(!d.Ch("loaded") && cc < 50)  // we wait 5 seconds! 
+    {      
+      console.warn("Waiting 100ms for JS-file to get loaded.");
+      await SLEEP(100);
+      cc++;
+    }
+    sk = 1;
+  }
+  
+  if(!sk) 
+  {
+    d = _b.CE("script").A({id: id, type: "text/javascript", class: "loading"});
+    await _LAZYa("../js/" + src + ".js", d);
+    d.Cr("loading").Ca("loaded");  
+  }    
 }
 
 // -----------------------------------------
@@ -73,14 +117,17 @@ function MH_open()
   if(_b.Ch("menu-onclick") || _b.Ch("portrait") || _b.Ch("menu-out"))
   {
     dmm.Ca("active");
-    dms.CSS({top: (dmm.offsetTop + dmm.H()) + "px"});
-    dmd.CSS({right: (_ws - dmm.offsetLeft) + "px"});
+    if(dms) dms.CSS({top: (dmm.offsetTop + dmm.H()) + "px"});
+    if(dmd) dmd.CSS({right: (_ws - dmm.offsetLeft) + "px"});
   }
   else
   {
     // main-menu isn't part of hamburger menu
-    dmd.CSS({right: "0px"});
-    dms.CSS({top: (dmd.offsetTop + dmd.H()) + "px"});
+    if(dmd) 
+    {
+      dmd.CSS({right: "0px"});
+      if(dms) dms.CSS({top: (dmd.offsetTop + dmd.H()) + "px"});
+    }
   }  
   
   X_MH(1);
@@ -210,7 +257,8 @@ function RES() // The Asynchronous Resize Event Handler
       big = (_win.matchMedia('(min-width: 1300px)').matches),
       fw = _ws / _1em,
       min = MIN_EM / _zoom,   // correct min/max relative to UX-zoom
-      max = MAX_EM / _zoom;
+      max = MAX_EM / _zoom,
+      mob = sma;
 
   _b.Ct("screen-small", sma);
   _b.Ct("screen-big", big);
@@ -256,8 +304,12 @@ function RES() // The Asynchronous Resize Event Handler
     if(fw <= min)
     {
       _b.Cr("landscape").Ca("portrait");  // For extreme cases... (also very small landscape)
+      mob = 1;
     }
   }
+
+  _b.Ct("mobile", mob);  // mob shall be .small-screen || .portrait
+  _b.Ct("desktop", !mob);
   
   FRAME(X_RES);
 }
@@ -369,7 +421,7 @@ async function toggle(e, sk)   // sk = skip most, just toggle on (used for title
 
   var ac = dp.children,
       n = ac.length,
-      h;
+      h = 0;
 
   if(n > 1)
   {
@@ -379,6 +431,8 @@ async function toggle(e, sk)   // sk = skip most, just toggle on (used for title
 
     if(!sk) dp.Ct("toggle-in", h).Ct("toggle-out", !h);
   }
+
+  X_toggle_after(dp, h ? 1 : 0);
 }
 
 
@@ -516,9 +570,16 @@ function aclick(e)
   e.preventDefault();
 
   var da = this,
-      href = da.A("href");
+      href = da.A("href"),
+      dp = da.parentNode;
  
   if(da.Ch('no-js')) return;
+
+  if(dp.Ch("li-line"))
+  {
+    dp = dp.parentNode;
+    if(dp.Ch("dropdown-js") && dp.Q(":scope > .li-sub")) return; // must be done at dropdown_click()
+  }
 
   if(da.Ch("a-img-bigger"))
   {
@@ -568,6 +629,7 @@ function CLICK(href)
       else _LAZY(_xr_ut + _lgiu, () => { dl8(); });     
       $.cc++;
     })();
+    $ = 0;
     return; 
   }
 

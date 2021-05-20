@@ -26,7 +26,7 @@ html
 {
 background:transparent;
 -webkit-text-size-adjust: none;  /* otherwise strange resizing of some fonts at chrome mobile */
-scroll-behavior: smooth;
+/* scroll-behavior: smooth; */
 }
 
 html.invert
@@ -66,7 +66,7 @@ left:0;
 
 
 
-body,header,nav,main,section,footer,div,p,picture,img,ul,li,q,h1,h2,h3,h4,h5,h6
+body,header,nav,main,section,footer,div,p,picture,img,ul,li,q,h1,h2,h3,h4,h5,h6,a
 {
 position: relative;
 margin: 0;
@@ -84,15 +84,15 @@ font-size: inherit;
  word-spacing:0em;
 letter-spacing:0em; */
 
-
 html, body
 {
 overscroll-behavior-x: none; 
+overscroll-behavior-y: none; 
 -ms-overflow-style: none;
 scrollbar-width: none;
-overflow: -moz-scrollbars-none;
-width:100%;
-height:100%;
+width: 100vw;
+height: 100%;
+max-width: 100vw;
 }
 
 
@@ -283,17 +283,6 @@ cursor:inherit !important;  /* in some browsers label have no inherit by default
 }
 
 
-.dum
-{
-position: fixed;
-top:-200em;
-opacity: 0.01;
-height: auto;
-width: auto;
-white-space: nowrap;
-}
-
-
 body.screen-small.portrait .hide-for-mobile
 {
 display:none;  
@@ -318,6 +307,11 @@ scrollbar-width: none;
 
 
 /* ------------------------- easy classes ------------- */
+
+.no-bg
+{
+background: none !important;
+}
 
 .no-scrollbar
 {
@@ -367,13 +361,33 @@ white-space: nowrap;
 flex-wrap: nowrap;
 }
 
-div > a
+
+nav div > a,
+.like-but > a
 {
 display: inline-block;
-height:100%;
-width:100%;
+height: 100%;
+width: 100%;
 }
 
 
+/* Note: Inside ratio-v container you must use absolute positioning; E.g.:
+position: absolute; top: 0; left: 0; bottom: 0; right: 0;
+Or use class="pos-abs-fill"
+*/
+
+.ratio-v 
+{
+padding-top: calc(100% * var(--ratio-v));   /* set CSS-Var: --ratio-v: 0.75; */
+}
+  
+.pos-abs-fill
+{
+position: absolute; 
+top: 0; 
+left: 0; 
+bottom: 0; 
+right: 0;    
+}
 
 

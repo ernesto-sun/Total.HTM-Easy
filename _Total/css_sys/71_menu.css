@@ -31,10 +31,21 @@ display:none;
 body.no-js:not(.menu-left) #menu-main,
 body.menu-top:not(.portrait) #menu-main
 {
-display:block;    
-position:fixed;
-top:var(--topline-height-shrunk);
-right:0em;
+display: block;    
+position: fixed;
+top: 2.2em;
+right: 12em;
+transition: transform 0.5s ease;     
+}
+
+body.menu-top:not(.portrait) #menu-main > ul > li > .li-line  .sym
+{
+display:none;
+}
+
+body.menu-top.header-out:not(.portrait) #menu-main
+{
+transform: translateY(-1.23em);
 }
 
 body.no-js:not(.menu-left) #menu-main > ul,
@@ -129,7 +140,7 @@ display:none;
 
 /* ------------------------------------- */
 
-nav li > *:nth-child(1),
+nav li > .li-line,
 .look-menu
 {
 border-radius: var(--menu-border-radius);
@@ -137,8 +148,8 @@ background: var(--menu-bg);
 border: var(--menu-border);   
 }
 
-
-#menu-main > ul > li > div:nth-child(1)
+#menu-main .li-line,
+#menu-topline .li-line
 {
 padding:0.1em 1em;
 margin-bottom:0.2em;
@@ -226,5 +237,27 @@ display:none;  /* Here done with JS, because .active means inside hamburger-menu
 body.menu-out #menu-main:not(.active)
 {
 display:none;
+}
+
+
+/* ------------------------------------------------- */
+
+#topline-menu
+{
+display: none;
+}
+
+body.desktop #topline-menu
+{
+display: block;
+}
+
+#menu-topline > ul
+{
+display: flex;
+flex-direction: row;
+flex-wrap:nowrap;
+justify-content: space-between;
+gap: 2.5em;
 }
 

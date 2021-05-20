@@ -40,23 +40,23 @@ foreach($arr_li as $dom_li)
     $d_li = pq($dom_li);
 
     if($d_li->hasClass("dropdown-css")) continue;
-    $d_li->addClass("dropdown-js");
 
-    $d_a = $d_li->find("a:first");
     $d_sub = $d_li->children(".li-sub:first");
-
     if($d_sub->length())
     {
+        $d_li->addClass("dropdown-js");
+
         $css = trim($d_sub->attr("style")).';display:block;';
         $d_sub->attr("style",$css);
         $d_sub->addClass("hide");
-    }
-    
-    if($d_a->length())
-    {
-        $d_a->attr("ondblclick", "aclick.call(this,event)");
-        $d_a->attr("onclick", "dropdown_click.call(this,event)");  // ovrwriting aclick from above
-    }
+
+        $d_a = $d_li->children(".li-line:first")->children("a:first");
+        if($d_a->length())
+        {
+            $d_a->attr("ondblclick", "aclick.call(this,event)");
+            $d_a->attr("onclick", "dropdown_click.call(this,event)");  // ovrwriting aclick from above
+        }
+    }    
 }
 
 
@@ -93,6 +93,21 @@ foreach($arr_toggle as $dom_toggle)
     }
 }
 
+
+// -----------------------------------------
+  // flip-effect
+
+$arr_flip = $doc[".flip"];
+
+foreach($arr_flip as $dom_flip)
+{
+    $d_flip = pq($dom_flip);
+    $d_flip->parent()->addClass("flip-outer");
+    $d_flip->attr("onclick", "flip_click.call(this,event)");
+}
+
+
+
 // -----------------------------------------
 // Add class obs to all elements that need the JS-Observer
 $arr_obs = $doc["#header, #footer, section, .box-grid, .observe, .parallax, .fly-in"];
@@ -128,7 +143,7 @@ foreach($arr_s as $dom_s)
                         $drm = $d_s->find(".readmore");
                         if($drm->length())
                         {
-                            $d_h->addClass("inline cursor-pointer");
+                            $d_h->addClass("cursor-pointer");
                             $d_h->attr("onclick", "titclick.call(this,event)");
                         }
                     }
