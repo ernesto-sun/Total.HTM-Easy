@@ -141,7 +141,7 @@ function I02F3()
 async function LAZY_section(ids)
 {
   var ds = fE(ids), cc = 0; 
-  if(ds.Ch("loaded")) return ds;
+  if(!ds.Ch("unloaded")) return ds;
   if(ds.Ch("loading"))
   {
     while(!ds.Ch("loaded") && cc < 50)  // we wait 5 seconds! 
@@ -159,7 +159,7 @@ async function LAZY_section(ids)
     throw new Error("Invalid result object in lazy section loading: " + ids);
   }
 
-  ds.Ca("loading").Cr("unloaded");
+  ds.Ca("loading");
   var dsb = ds.Q(":scope > .section-body");
   if(!dsb)
   {
@@ -176,7 +176,7 @@ async function LAZY_section(ids)
   DYN(dsb.APs(ht)); 
 
   await SLEEP(100);
-  ds.Cr("loading").Ca("loaded");
+  ds.Cr("loading").Ca("loaded").Cr("unloaded");
 
   return ds;
 }

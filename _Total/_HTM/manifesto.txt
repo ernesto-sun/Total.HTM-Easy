@@ -1,0 +1,97 @@
+
+
+"Write a manifesto: It's time to craft your story. Write a short (250 word) 
+manifesto about your product. It should have three parts. First, outline the 
+problem. Second, share your solution to the problem. Third, talk about the 
+specifics of your solution."
+-- https://awesomeopensource.com/project/nicolas-racchi/SaaS4Devs
+
+Inspired by this phrase here it is:
+
+
+------------------------------------------------------------------------------
+#				Manifesto for Total.HTM 
+------------------------------------------------------------------------------
+
+* License: Creative Value ( http://exa.run/creative )
+* Creator: eto: Ernesto Sun ( http://ernesto-sun.com )
+* Created: 2021-05-21
+* Last Change: 2021-05-21 (eto) 
+
+------------------------------------------------------------------------------
+##				Terms Explained
+------------------------------------------------------------------------------
+
+* ICT: 
+* Good: 
+: Open Source:
+* Tech evangelist:
+* Multimedia: 
+* Web standards
+* IT: 
+* JSON: 
+* MIT: 
+* HTML5:
+* CSS3:
+* EcmaScript6: Vanilla JavaScript
+* MAKE:
+* PHP:
+* E-commerce:
+* EXA: 
+* App:
+* EXA Earth:
+
+
+------------------------------------------------------------------------------
+##				The Problem
+------------------------------------------------------------------------------
+
+Many nice people and great small businesses, as well as many important NPOs, 
+that make the planet a better place - exist, and do struggle a lot with ICT. 
+
+For social, cultural, ecological, regional companies and others, the Internet 
+technology they need to tell their stories and to maintain their growing 
+number of relations, is not at their reach all too often. 
+
+Still, a modern, flexible, powerful web presence is hard to achieve and 
+expensive in maintenance. Good people and organisations have many relevant 
+things to do, somewhere else than in front of a screen.
+
+
+------------------------------------------------------------------------------
+##				The Solution
+------------------------------------------------------------------------------
+
+Open Source technology based on modern web standards, so that any web developer
+can master it: No more excuses from tech evangelists. 
+
+Community-building inviting approaches to people who have precious content to 
+share on the world wide web. Whether text, design or multimedia, in whatever 
+way, all these creative people need to have the right tool at hand. 
+
+The clean use of the open web standards is key to a new comfort and trust in
+maintaining a site, a portal, or even an ecosystem of online services. 
+
+The limit is not a lack of IT expertise, but creativity and quality of content.  
+     
+
+------------------------------------------------------------------------------
+##				The Specifics
+------------------------------------------------------------------------------
+    
+Total.HTM is licensed unser JSON, defacto MIT, plus the famous ethical phrase: 
+"The Software shall be used for Good, not Evil."
+
+Total.HTM and the optimized result are build on pure web standards and defacto 
+standards. Total.HTM is made of HTML5, CSS3 and EcmaScript6. The MAKE-optimizer 
+uses regular PHP. No frameworks or special modules whatsoever.   
+
+Total.HTM is the right way to use the Internet, both for developers and all 
+the precious creatives, networkers, and story-tellers. 
+
+Total.HTM integrates with the powerful programming language EXA, to create 
+Apps of any complexity. Total.HTM also works for industries and e-commerce. 
+
+All for good: 10% go to EXA Earth. 
+  
+
